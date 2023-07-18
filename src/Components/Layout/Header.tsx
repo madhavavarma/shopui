@@ -1,4 +1,11 @@
-import { Avatar, Button, Container, Grid, Stack } from "@mui/material";
+import {
+  Avatar,
+  Button,
+  Container,
+  Grid,
+  Stack,
+  Typography,
+} from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useNavigate } from "react-router-dom";
 
@@ -23,17 +30,20 @@ export const Header = () => {
         <Grid container pt={2} pb={1} alignItems="center">
           <Grid
             item
-            xs={4}
+            xs={6}
             container
             alignItems="center"
             onClick={logoClickHandler}
+            sx={{ position: "relative", left: "-12px" }}
           >
             <Avatar
               alt="Fresh Cuts"
               src="./freshCut.jpg"
-              sx={{ width: 56, height: 56 }}
+              sx={{ width: 40, height: 40 }}
             />
-            <h2>Fresh Cuts</h2>
+            <Typography fontSize={"1.3rem"} fontWeight={"bold"}>
+              Fresh Cuts
+            </Typography>
           </Grid>
           <Grid item xs></Grid>
           <Grid item xs="auto" alignItems="right">
