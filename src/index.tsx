@@ -1,10 +1,11 @@
-import ReactDOM from 'react-dom/client';
-import Button from '@mui/material/Button';
+import ReactDOM from "react-dom/client";
+import Container from "@mui/system/Container";
+import App from "./App";
 
-var root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+var root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
 root.render(
-    <div>
-         <Button variant="contained">Hello World</Button>
-    </div>
-)
+  <div>
+    <App />
+  </div>
+);
