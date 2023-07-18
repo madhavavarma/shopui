@@ -1,12 +1,33 @@
 import { Avatar, Button, Container, Grid, Stack } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
+  const navigate = useNavigate();
+
+  const logoClickHandler = () => {
+    navigate("/");
+  };
+
+  const accountClickHandler = () => {
+    navigate("/Login");
+  };
+
+  const cartClickHandler = () => {
+    navigate("/Checkout");
+  };
+
   return (
     <header>
       <Container>
         <Grid container pt={2} pb={1} alignItems="center">
-          <Grid item xs={4} container alignItems="center">
+          <Grid
+            item
+            xs={4}
+            container
+            alignItems="center"
+            onClick={logoClickHandler}
+          >
             <Avatar
               alt="Fresh Cuts"
               src="./freshCut.jpg"
@@ -17,10 +38,14 @@ export const Header = () => {
           <Grid item xs></Grid>
           <Grid item xs="auto" alignItems="right">
             <Stack direction="row" spacing={2}>
-              <Button variant="outlined" startIcon={<AddShoppingCartIcon />}>
+              <Button
+                variant="outlined"
+                onClick={cartClickHandler}
+                startIcon={<AddShoppingCartIcon />}
+              >
                 0
               </Button>
-              <Button variant="outlined">
+              <Button variant="outlined" onClick={accountClickHandler}>
                 <Avatar sx={{ width: 24, height: 24 }}></Avatar>
               </Button>
             </Stack>

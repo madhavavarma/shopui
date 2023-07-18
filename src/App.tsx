@@ -1,19 +1,32 @@
 import { Divider } from "@mui/material";
-import { Header } from "./Components/Products/Header";
+import { Header } from "./Components/Layout/Header";
 import { Categoreis } from "./Components/Products/Categories";
 import { Products } from "./Components/Products/Products";
-import { Footer } from "./Components/Products/Footer";
+import { Footer } from "./Components/Layout/Footer";
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Login } from "./Components/Account/Login";
+import { RootLayout } from "./RootLayout";
+import { Create } from "./Components/Account/Create";
+import Checkout from "./Components/Checkout/Checkout";
+import Detail from "./Components/Products/Detail";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      { path: "/", element: <Products /> },
+      { path: "/detail", element: <Detail /> },
+      { path: "/login", element: <Login /> },
+      { path: "/create", element: <Create /> },
+      { path: "/checkout", element: <Checkout /> },
+    ],
+  },
+]);
 
 function App() {
-  return (
-    <div>
-      <Header />
-      <Divider />
-      <Categoreis />
-      <Products />
-      <Footer />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
