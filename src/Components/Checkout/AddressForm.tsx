@@ -15,9 +15,7 @@ export default function AddressForm() {
   const shipping = useSelector(
     (store: IStoreReducer) => store.checkout.shipping
   );
-  const onMoveNext = useSelector(
-    (store: IStoreReducer) => store.checkout.onMovingStep
-  );
+  const onMoveNext = true;
 
   const [name, setName] = useState(shipping.name);
   const [phone, setPhone] = useState(shipping.phone);
@@ -45,7 +43,7 @@ export default function AddressForm() {
 
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h6" gutterBottom pt={6}>
         Shipping address
       </Typography>
       <Grid container spacing={3}>

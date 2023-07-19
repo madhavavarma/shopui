@@ -9,7 +9,7 @@ import { FormControl, FormLabel, Radio, RadioGroup } from "@mui/material";
 export default function PaymentForm() {
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h6" gutterBottom pt={6}>
         Payment method
       </Typography>
       <Grid container spacing={3}>

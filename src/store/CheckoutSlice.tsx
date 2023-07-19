@@ -16,8 +16,6 @@ function isValidShipping(shipping: IShipping) {
 }
 
 const initialState: IStoreCheckout = {
-  activeStep: 1,
-  onMovingStep: false,
   cartList: [],
   shipping: {
     name: "",
@@ -73,27 +71,24 @@ var checkoutSlice = createSlice({
       );
     },
 
-    // Stepper
-    moveToNextStep(state) {
-      state.onMovingStep = true;
-      if (state.activeStep == 1 && isValidShipping(state.shipping)) {
-        state.activeStep++;
-        state.onMovingStep = false;
-      } else if (state.activeStep == 3) {
-        state.cartList = [];
-        state.shipping = {} as IShipping;
-      } else if (state.activeStep != 1) {
-        state.activeStep++;
-        state.onMovingStep = false;
-      }
-    },
-    moveToPrevStep(state) {
-      if (state.activeStep > 0) state.activeStep--;
-    },
-
     // Shipping
     setShipping(state, action) {
       state.shipping = action.payload;
+    },
+
+    // reset
+    reset(state) {
+      state.cartList = [];
+      state.shipping = {
+        name: "",
+        address1: "",
+        address2: "",
+        city: "",
+        country: "India",
+        phone: "",
+        state: "Andhra Pradesh",
+        zip: "",
+      };
     },
   },
 });

@@ -20,18 +20,13 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { IStoreReducer } from "../../models/IStoreReducer";
 import { checkoutActions } from "../../store/CheckoutSlice";
+import { Divider } from "@mui/material";
 
-const steps = ["Order", "Shipping", "Payment", "Review"];
+const steps = ["Review"];
 
 function getStepContent(step: number) {
   switch (step) {
     case 0:
-      return <Order />;
-    case 1:
-      return <AddressForm />;
-    case 2:
-      return <PaymentForm />;
-    case 3:
       return <Review />;
     default:
       throw new Error("Unknown step");
@@ -45,29 +40,17 @@ export default function Checkout() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const activeStep = useSelector(
-    (store: IStoreReducer) => store.checkout.activeStep
-  );
-
   const cartItems = useSelector(
     (store: IStoreReducer) => store.checkout.cartList
   );
 
-  const handleNext = () => {
-    dispatch(checkoutActions.moveToNextStep());
-  };
-
-  const shopHandler = () => {
+  const backHandler = () => {
     navigate("/");
   };
 
-  const handleBack = () => {
-    dispatch(checkoutActions.moveToPrevStep());
-
-    if (activeStep == 0) {
-      navigate("/");
-      return;
-    }
+  const placeOrderHandler = () => {
+    dispatch(checkoutActions.reset());
+    navigate("/");
   };
 
   return (
@@ -87,67 +70,33 @@ export default function Checkout() {
           variant="outlined"
           sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
         >
-          <Typography component="h1" variant="h4" align="center">
+          <Typography component="h1" variant="h4" align="center" mb={4}>
             Checkout
           </Typography>
-          <Stepper
-            activeStep={activeStep}
-            sx={{ pt: 3, pb: 5 }}
-            alternativeLabel
-          >
-            {steps.map((label) => (
-              <Step
-                key={label}
-                sx={{
-                  "& .MuiStepLabel-root .Mui-completed": {
-                    color: "#2db457", // circle color (COMPLETED)
-                  },
-                  "& .MuiStepLabel-label.Mui-completed.MuiStepLabel-alternativeLabel":
-                    {
-                      color: "#2db457", // Just text label (COMPLETED)
-                    },
-                  "& .MuiStepLabel-root .Mui-active": {
-                    color: "#2db457", // circle color (ACTIVE)
-                  },
-                  "& .MuiStepLabel-label.Mui-active.MuiStepLabel-alternativeLabel":
-                    {
-                      color: "grey.500", // Just text label (ACTIVE)
-                    },
-                  "& .MuiStepLabel-root .Mui-active .MuiStepIcon-text": {
-                    fill: "#fff", // circle's number (ACTIVE)
-                  },
-                }}
-              >
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-          {activeStep === steps.length ? (
+
+          {cartItems.length > 0 && (
             <React.Fragment>
-              <Typography variant="h5" gutterBottom>
-                Thank you for your order.
-              </Typography>
-              <Typography variant="subtitle1">
-                Your order number is #2001539. We have emailed your order
-                confirmation, and will send you an update when your order has
-                shipped. <Link onClick={shopHandler}>Shop</Link>
-              </Typography>
-            </React.Fragment>
-          ) : (
-            <React.Fragment>
-              {getStepContent(activeStep)}
-              <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-                <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-                  Back
-                </Button>
-                {cartItems.length > 0 && (
-                  <Button onClick={handleNext} sx={{ mt: 3, ml: 1 }}>
-                    {activeStep === steps.length - 1 ? "Place order" : "Next"}
-                  </Button>
-                )}
-              </Box>
+              <Order />
+              <Divider />
+              <AddressForm />
+              <Divider />
+              <PaymentForm />
+              <Divider />
             </React.Fragment>
           )}
+
+          <React.Fragment>
+            <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+              <Button onClick={backHandler} sx={{ mt: 3, ml: 1 }}>
+                Back
+              </Button>
+              {cartItems.length > 0 && (
+                <Button onClick={placeOrderHandler} sx={{ mt: 3, ml: 1 }}>
+                  Place order
+                </Button>
+              )}
+            </Box>
+          </React.Fragment>
         </Paper>
       </Container>
     </ThemeProvider>

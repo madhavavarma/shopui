@@ -13,6 +13,7 @@ import { IProduct } from "../../models/IProduct";
 import { checkoutActions } from "../../store/CheckoutSlice";
 import AddCircleOutlinedIcon from "@mui/icons-material/AddCircleOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import productSlice from "../../store/ProductSlice";
 
 const Order = () => {
   var dispatch = useDispatch();
@@ -45,6 +46,7 @@ const Order = () => {
       <Typography variant="h6" gutterBottom>
         Order Summary
       </Typography>
+
       {cartList.map((cartItem) => (
         <Grid
           container
@@ -53,17 +55,24 @@ const Order = () => {
           mt={4}
           mb={4}
         >
-          <Grid item xs={3}>
+          {/* <Grid item xs={1}>
+            <DeleteOutlinedIcon
+              sx={{ color: "#2db457" }}
+              onClick={(e) => removeCartItemHandler(cartItem.product)}
+            />
+          </Grid> */}
+          <Grid item xs={5}>
             <img
               alt={cartItem.product.name}
               src={cartItem.product.image}
-              height="60px"
+              height="40px"
             />
-          </Grid>
-          <Grid item xs={5}>
             <Typography>{cartItem.product.name}</Typography>
+          </Grid>
+          <Grid item xs={2}>
             <Typography>{cartItem.product.weight}</Typography>
           </Grid>
+
           <Grid item xs={3}>
             <Button>
               <Grid item alignItems={"center"} display="flex">
@@ -81,14 +90,30 @@ const Order = () => {
               </Grid>
             </Button>
           </Grid>
-          <Grid item xs={1}>
-            <DeleteOutlinedIcon
-              sx={{ color: "#2db457" }}
-              onClick={(e) => removeCartItemHandler(cartItem.product)}
-            />
+          <Grid item xs={2}>
+            <Typography align="right">
+              {cartItem.product.price *
+                cartProduct(cartItem.product)?.quantity!}
+            </Typography>
           </Grid>
         </Grid>
       ))}
+
+      <Grid
+        container
+        justifyContent={"flex-end"}
+        fontWeight={"bold"}
+        fontSize={"1.2em"}
+      >
+        <Grid item xs={8}>
+          Total Amount
+        </Grid>
+        <Grid item xs={4} textAlign={"right"}>
+          {cartList
+            .map((item) => item.product.price * item.quantity)
+            .reduce((a, b) => a + b, 0)}
+        </Grid>
+      </Grid>
     </Box>
   );
 };
