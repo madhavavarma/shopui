@@ -15,13 +15,18 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import AddressForm from "./AddressForm";
 import PaymentForm from "./PaymentForm";
 import Review from "./Review";
+import Order from "./Order";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { IStoreReducer } from "../../models/IStoreReducer";
+import { checkoutActions } from "../../store/CheckoutSlice";
 
 const steps = ["Order", "Shipping", "Payment", "Review"];
 
 function getStepContent(step: number) {
   switch (step) {
     case 0:
-      return <div>Order Summary</div>;
+      return <Order />;
     case 1:
       return <AddressForm />;
     case 2:
@@ -37,14 +42,32 @@ function getStepContent(step: number) {
 const defaultTheme = createTheme();
 
 export default function Checkout() {
-  const [activeStep, setActiveStep] = React.useState(0);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const activeStep = useSelector(
+    (store: IStoreReducer) => store.checkout.activeStep
+  );
+
+  const cartItems = useSelector(
+    (store: IStoreReducer) => store.checkout.cartList
+  );
 
   const handleNext = () => {
-    setActiveStep(activeStep + 1);
+    dispatch(checkoutActions.moveToNextStep());
+  };
+
+  const shopHandler = () => {
+    navigate("/");
   };
 
   const handleBack = () => {
-    setActiveStep(activeStep - 1);
+    dispatch(checkoutActions.moveToPrevStep());
+
+    if (activeStep == 0) {
+      navigate("/");
+      return;
+    }
   };
 
   return (
@@ -107,21 +130,21 @@ export default function Checkout() {
               <Typography variant="subtitle1">
                 Your order number is #2001539. We have emailed your order
                 confirmation, and will send you an update when your order has
-                shipped.
+                shipped. <Link onClick={shopHandler}>Shop</Link>
               </Typography>
             </React.Fragment>
           ) : (
             <React.Fragment>
               {getStepContent(activeStep)}
               <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-                {activeStep !== 0 && (
-                  <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-                    Back
+                <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+                  Back
+                </Button>
+                {cartItems.length > 0 && (
+                  <Button onClick={handleNext} sx={{ mt: 3, ml: 1 }}>
+                    {activeStep === steps.length - 1 ? "Place order" : "Next"}
                   </Button>
                 )}
-                <Button onClick={handleNext} sx={{ mt: 3, ml: 1 }}>
-                  {activeStep === steps.length - 1 ? "Place order" : "Next"}
-                </Button>
               </Box>
             </React.Fragment>
           )}

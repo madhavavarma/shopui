@@ -8,9 +8,12 @@ import {
 } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useNavigate } from "react-router-dom";
+import { IStoreReducer } from "../../models/IStoreReducer";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
   const navigate = useNavigate();
+  const cart = useSelector((state: IStoreReducer) => state.checkout.cartList);
 
   const logoClickHandler = () => {
     navigate("/");
@@ -53,7 +56,7 @@ export const Header = () => {
                 onClick={cartClickHandler}
                 startIcon={<AddShoppingCartIcon />}
               >
-                0
+                {cart.length}
               </Button>
               <Button variant="outlined" onClick={accountClickHandler}>
                 <Avatar sx={{ width: 24, height: 24 }}></Avatar>
