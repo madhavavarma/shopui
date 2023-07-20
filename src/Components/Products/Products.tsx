@@ -18,9 +18,11 @@ import AddCircleOutlinedIcon from "@mui/icons-material/AddCircleOutlined";
 import RemoveCircleOutlined from "@mui/icons-material/RemoveCircleOutlined";
 import BalanceOutlinedIcon from "@mui/icons-material/BalanceOutlined";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
+import { useNavigate } from "react-router-dom";
 
 export const Products = () => {
   var dispatch = useDispatch();
+  var navigate = useNavigate();
   var products = useSelector((store: IStoreReducer) => store.product.list);
   var cartProducts = useSelector(
     (store: IStoreReducer) => store.checkout.cartList
@@ -47,6 +49,10 @@ export const Products = () => {
 
   const cartProduct = (product: IProduct) => {
     return cartProducts.find((cartItem) => cartItem.product.id == product.id);
+  };
+
+  const onViewClickHandler = (product: IProduct) => {
+    navigate("/" + product.id);
   };
 
   return (
@@ -113,7 +119,12 @@ export const Products = () => {
                         alignItems={"space-around"}
                         justifyContent={"space-between"}
                       >
-                        <Button size="small">View</Button>
+                        <Button
+                          size="small"
+                          onClick={(e) => onViewClickHandler(product)}
+                        >
+                          View
+                        </Button>
                         {isProductInCart(product) && (
                           <Button>
                             <Grid item alignItems={"center"} display="flex">

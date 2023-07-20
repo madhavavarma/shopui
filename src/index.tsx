@@ -3,8 +3,4 @@ import App from "./App";
 
 var root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
-root.render(
-  <div>
-    <App />
-  </div>
-);
+root.render(<App />);

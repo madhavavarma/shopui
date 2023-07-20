@@ -1,4 +1,4 @@
-import { Divider } from "@mui/material";
+import { Box, Divider, Grid } from "@mui/material";
 import { Header } from "./Components/Layout/Header";
 import { Footer } from "./Components/Layout/Footer";
 import { Outlet } from "react-router-dom";
@@ -8,12 +8,14 @@ import store from "./store/store";
 export const RootLayout = () => {
   return (
     <Provider store={store}>
-      <main>
+      <Grid container display="flex" minHeight="100%" flexDirection={"column"}>
         <Header />
         <Divider />
-        <Outlet />
-        <Footer />
-      </main>
+        <Box sx={{ flex: "1" }}>
+          <Outlet />
+        </Box>
+      </Grid>
+      <Footer />
     </Provider>
   );
 };

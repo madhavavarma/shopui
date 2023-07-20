@@ -2,11 +2,14 @@ import {
   Box,
   Button,
   Container,
+  FormControl,
+  FormHelperText,
   Grid,
   Link,
   TextField,
   Typography,
 } from "@mui/material";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
@@ -14,6 +17,33 @@ export const Login = () => {
 
   const createAccountHandler = () => {
     navigate("/create");
+  };
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+
+    // Reset error states
+    setEmailError(false);
+    setPasswordError(false);
+
+    // Validate fields
+    if (!email) {
+      setEmailError(true);
+      return;
+    }
+
+    if (!password) {
+      setPasswordError(true);
+      return;
+    }
+
+    // Implement your login logic here (e.g., API call, authentication)
+    console.log("Login submitted:", { email, password });
   };
 
   return (
@@ -41,24 +71,34 @@ export const Login = () => {
             spacing={4}
           >
             <Grid item xs={12}>
-              <TextField
-                id="outlined-basic"
-                label="User Name"
-                variant="outlined"
-                sx={{ backgroundColor: "#fff" }}
-                fullWidth
-                color="success"
-              />
+              <FormControl fullWidth margin="normal" error={emailError}>
+                <TextField
+                  label="Email"
+                  type="email"
+                  variant="outlined"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+                {emailError && (
+                  <FormHelperText>Email is required</FormHelperText>
+                )}
+              </FormControl>
             </Grid>
             <Grid item>
-              <TextField
-                id="outlined-basic"
-                label="Password"
-                variant="outlined"
-                sx={{ backgroundColor: "#fff" }}
-                fullWidth
-                color="success"
-              />
+              <FormControl fullWidth margin="normal" error={passwordError}>
+                <TextField
+                  label="Password"
+                  type="password"
+                  variant="outlined"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                {passwordError && (
+                  <FormHelperText>Password is required</FormHelperText>
+                )}
+              </FormControl>
             </Grid>
             <Grid item>
               <Button
@@ -71,6 +111,7 @@ export const Login = () => {
                     color: "#2db457 !important",
                   },
                 }}
+                onClick={handleSubmit}
               >
                 Login
               </Button>
