@@ -8,7 +8,7 @@ const productList = [
     price: "600",
     description: "Good source of Protein",
     image: "./cashew.jpg",
-    categories: [1],
+    categories: [0],
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const productList = [
     price: "300",
     description: "Good source of Protein",
     image: "./cashew.jpg",
-    categories: [1],
+    categories: [0],
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ const productList = [
     price: "550",
     description: "Good source of Protein",
     image: "./cashew.jpg",
-    categories: [1],
+    categories: [0],
   },
   {
     id: 4,
@@ -45,6 +45,36 @@ const productList = [
     description: "Good source of Protein",
     image: "./cashew.jpg",
     categories: [1],
+  },
+
+  {
+    id: 6,
+    name: "Cashews Split",
+    weight: "10kg",
+    price: "5000",
+    description: "Good source of Protein",
+    image: "./cashew.jpg",
+    categories: [2],
+  },
+
+  {
+    id: 7,
+    name: "Cashews Split",
+    weight: "10kg",
+    price: "5000",
+    description: "Good source of Protein",
+    image: "./cashew.jpg",
+    categories: [2],
+  },
+
+  {
+    id: 8,
+    name: "Cashews Split",
+    weight: "10kg",
+    price: "5000",
+    description: "Good source of Protein",
+    image: "./cashew.jpg",
+    categories: [2],
   },
 ];
 

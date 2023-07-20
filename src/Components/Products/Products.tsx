@@ -16,6 +16,8 @@ import { checkoutActions } from "../../store/CheckoutSlice";
 import { IProduct } from "../../models/IProduct";
 import AddCircleOutlinedIcon from "@mui/icons-material/AddCircleOutlined";
 import RemoveCircleOutlined from "@mui/icons-material/RemoveCircleOutlined";
+import BalanceOutlinedIcon from "@mui/icons-material/BalanceOutlined";
+import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 
 export const Products = () => {
   var dispatch = useDispatch();
@@ -65,18 +67,42 @@ export const Products = () => {
                       title={product.name}
                     />
                     <CardContent>
-                      <Typography
-                        gutterBottom
-                        variant="h5"
-                        component="div"
-                        sx={{
-                          color: "#030303",
-                          fontSize: "19px",
-                          fontWeight: "normal",
-                        }}
+                      <Grid
+                        container
+                        justifyContent={"space-between"}
+                        alignItems={"center"}
+                        gap={2}
                       >
-                        {product.name}
-                      </Typography>
+                        <Typography
+                          gutterBottom
+                          variant="h5"
+                          component="div"
+                          sx={{
+                            color: "#030303",
+                            fontSize: "19px",
+                            fontWeight: "normal",
+                          }}
+                        >
+                          {product.name}
+                        </Typography>
+                        <Typography
+                          display="flex"
+                          alignItems={"center"}
+                          fontSize="0.9rem"
+                        >
+                          <BalanceOutlinedIcon sx={{ color: "#2db457" }} />{" "}
+                          {product.weight}
+                        </Typography>
+
+                        <Typography
+                          display="flex"
+                          alignItems={"center"}
+                          fontSize="1.1rem"
+                        >
+                          <CurrencyRupeeIcon sx={{ color: "#2db457" }} />{" "}
+                          {product.price}
+                        </Typography>
+                      </Grid>
                       <Typography variant="body2" color="text.secondary">
                         {product.description}
                       </Typography>

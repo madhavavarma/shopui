@@ -44,7 +44,11 @@ export const Header = () => {
               src="./freshCut.jpg"
               sx={{ width: 40, height: 40 }}
             />
-            <Typography fontSize={"1.3rem"} fontWeight={"bold"}>
+            <Typography
+              fontSize={"1.3rem"}
+              fontWeight={"bold"}
+              sx={{ cursor: "pointer" }}
+            >
               Fresh Cuts
             </Typography>
           </Grid>

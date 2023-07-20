@@ -1,11 +1,23 @@
-import { Grid, Link } from "@mui/material";
+import { Box, Grid, Link, Tab, Tabs } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { IStoreReducer } from "../../models/IStoreReducer";
 import { categoryActions } from "../../store/CategorySlice";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+
+function LinkTab(props: any) {
+  return (
+    <Tab
+      component="a"
+      onClick={(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {}}
+      {...props}
+    />
+  );
+}
 
 export const Categoreis = () => {
   var dispatch = useDispatch();
   var categories = useSelector((store: IStoreReducer) => store.category);
+  var active = useSelector((store: IStoreReducer) => store.category.active);
 
   const categoryClickHandler = (categoryId: number) => {
     dispatch(categoryActions.setActive(categoryId));
@@ -13,31 +25,20 @@ export const Categoreis = () => {
 
   return (
     <nav>
-      <Grid container pt={2} spacing={4}>
-        {categories.list.map((category) => (
-          <Grid item xs="auto" key={category.id}>
-            <Link
-              href="#"
-              underline="none"
-              variant="button"
-              onClick={(e) => categoryClickHandler(category.id)}
-              sx={{
-                letterSpacing: "1px",
-                borderBottom:
-                  categories.active == category.id
-                    ? "3px solid #2db457"
-                    : "3px dashed #2db457",
-                paddingBottom: "5px",
-                "&:hover": {
-                  borderBottom: "3px solid #2db457",
-                },
-              }}
-            >
-              {category.name}
-            </Link>
-          </Grid>
-        ))}
-      </Grid>
+      <Box>
+        <Tabs
+          value={active}
+          onChange={(e, val) => categoryClickHandler(val)}
+          aria-label="icon label tabs example"
+          TabIndicatorProps={{
+            style: { backgroundColor: "#2db457" },
+          }}
+        >
+          {categories.list.map((category) => (
+            <LinkTab label={category.name} key={category.id} />
+          ))}
+        </Tabs>
+      </Box>
     </nav>
   );
 };

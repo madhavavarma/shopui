@@ -3,11 +3,11 @@ import { IStoreCategory } from "../models/IStoreCategory";
 
 var initialState: IStoreCategory = {
   list: [
-    { id: 1, name: "Cashews" },
-    { id: 2, name: "Vegetables" },
-    { id: 3, name: "Fruits" },
+    { id: 0, name: "Cashews" },
+    { id: 1, name: "Vegetables" },
+    { id: 2, name: "Fruits" },
   ],
-  active: 1,
+  active: 0,
 };
 
 const categorySlice = createSlice({
