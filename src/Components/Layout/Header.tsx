@@ -2,6 +2,7 @@ import {
   Avatar,
   Button,
   Container,
+  Divider,
   Grid,
   Stack,
   Typography,
@@ -30,11 +31,12 @@ export const Header = () => {
   return (
     <header>
       <Container>
-        <Grid container pt={2} pb={1} alignItems="center">
+        <Grid display="flex" pt={2} pb={1} alignItems="center">
           <Grid
             item
             xs={6}
             container
+            display={"flex"}
             alignItems="center"
             onClick={logoClickHandler}
             sx={{ position: "relative", left: "-12px" }}
@@ -69,6 +71,7 @@ export const Header = () => {
           </Grid>
         </Grid>
       </Container>
+      <Divider />
     </header>
   );
 };

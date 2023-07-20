@@ -2,7 +2,6 @@ import { Divider } from "@mui/material";
 import { Header } from "./Components/Layout/Header";
 import { Categoreis } from "./Components/Products/Categories";
 import { Products } from "./Components/Products/Products";
-import { Footer } from "./Components/Layout/Footer";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Login } from "./Components/Account/Login";
