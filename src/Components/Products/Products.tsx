@@ -52,22 +52,38 @@ export const Products = () => {
   };
 
   const onViewClickHandler = (product: IProduct) => {
-    navigate("/" + product.id);
+    navigate("/product/" + product.id);
   };
 
   return (
     <section className="backgroundf7">
       <Categoreis />
       <Container>
-        <Grid container  mt={1} pt={6} pb={10}>
+        <Grid container mt={1} pt={6} pb={10}>
           {products
             .filter((product) => product.categories.includes(activeCategory))
             .map((product, index) => {
               return (
-                <Grid key={index} item xs={12} sm={12} md={4} sx={{opacity: "0.9", "&:hover": {
-                  opacity: "1",
-                }}}>
-                  <Card sx={{ minWidth: 345, borderRadius: "0px", border: "1px solid #f7f7f7" }} >
+                <Grid
+                  key={index}
+                  item
+                  xs={12}
+                  sm={12}
+                  md={4}
+                  sx={{
+                    opacity: "0.9",
+                    "&:hover": {
+                      opacity: "1",
+                    },
+                  }}
+                >
+                  <Card
+                    sx={{
+                      minWidth: 345,
+                      borderRadius: "0px",
+                      border: "1px solid #f7f7f7",
+                    }}
+                  >
                     <CardMedia
                       sx={{ height: 240, backgroundSize: "200px 200px" }}
                       image={product.image}
@@ -110,16 +126,20 @@ export const Products = () => {
                           {product.price}
                         </Typography>
                       </Grid>
-                      <Typography variant="body2" color="text.secondary" mt={1} sx={{height: "80px"}}>
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        mt={1}
+                        sx={{ height: "80px" }}
+                      >
                         {product.description}
                       </Typography>
                     </CardContent>
-                    <CardActions sx={{padding: "8px 16px"}}>
+                    <CardActions sx={{ padding: "8px 16px" }}>
                       <Grid
                         container
                         alignItems={"space-around"}
                         justifyContent={"space-between"}
-                        
                       >
                         <Button
                           size="small"
@@ -128,23 +148,21 @@ export const Products = () => {
                           View
                         </Button>
                         {isProductInCart(product) && (
-                          
-                            <Grid item alignItems={"center"} display="flex">
-                              <Button>
-                                <RemoveCircleOutlined
-                                  sx={{ color: "#2db457" }}
-                                  onClick={(e) => decrementFromCart(product)}
-                                />
-                                <Typography component="span" pl={1} pr={1}>
-                                  {cartProduct(product)?.quantity}
-                                </Typography>
-                                <AddCircleOutlinedIcon
-                                  sx={{ color: "#2db457" }}
-                                  onClick={(e) => addToCartHandler(product)}
-                                />
-                              </Button>
-                            </Grid>
-                            
+                          <Grid item alignItems={"center"} display="flex">
+                            <Button>
+                              <RemoveCircleOutlined
+                                sx={{ color: "#2db457" }}
+                                onClick={(e) => decrementFromCart(product)}
+                              />
+                              <Typography component="span" pl={1} pr={1}>
+                                {cartProduct(product)?.quantity}
+                              </Typography>
+                              <AddCircleOutlinedIcon
+                                sx={{ color: "#2db457" }}
+                                onClick={(e) => addToCartHandler(product)}
+                              />
+                            </Button>
+                          </Grid>
                         )}
                         {!isProductInCart(product) && (
                           <Grid item>
