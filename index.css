@@ -1,0 +1,43 @@
+html,
+body,
+#root {
+  background-color: #fff;
+  font-family: "roboto";
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: #666 !important;
+}
+
+button {
+  color: #2db457 !important;
+  border: 1px dashed #2db457 !important;
+}
+
+a {
+  color: #2db457 !important;
+}
+
+.Link {
+  color: black;
+}
+
+/* Increase the specificity */
+.Link:hover {
+  color: white;
+}
+
+.navClass {
+  background-color: #2db457 !important;
+  padding: 5px;
+}
+
+.backgroundf7 {
+  background-color: #f7f7f7 !important;
+}
+
+h6 {
+  font-size: 0.8rem !important;
+  color: #9b9b9b;
+  letter-spacing: 0.09rem !important;
+}
