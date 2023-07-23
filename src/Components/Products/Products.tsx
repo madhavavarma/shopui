@@ -52,7 +52,7 @@ export const Products = () => {
   };
 
   const onViewClickHandler = (product: IProduct) => {
-    navigate("/product/" + product.id);
+    navigate("/products/" + product.id);
   };
 
   return (
