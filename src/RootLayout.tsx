@@ -10,7 +10,7 @@ export const RootLayout = () => {
     <Provider store={store}>
       <Grid display="flex" minHeight="100%" flexDirection={"column"}>
         <Header />
-        <Box sx={{ flex: "1" }}>
+        <Box sx={{ flex: "1", backgroundColor: "#f7f7f7" }}>
           <Outlet />
         </Box>
       </Grid>

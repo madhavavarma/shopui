@@ -8,8 +8,9 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IStoreReducer } from "../../models/IStoreReducer";
 import { checkoutActions } from "../../store/CheckoutSlice";
+import { Box } from "@mui/material";
 
-export default function AddressForm() {
+export default function Shipping() {
   const dispatch = useDispatch();
 
   const shipping = useSelector(
@@ -42,12 +43,12 @@ export default function AddressForm() {
   };
 
   return (
-    <React.Fragment>
-      <Typography variant="h6" gutterBottom pt={6}>
-        Shipping address
+    <Box sx={{ maxWidth: "500px" }}>
+      <Typography variant="h6" gutterBottom borderBottom={"5px solid #f9f9f9"}>
+        SHIPPING DETAILS
       </Typography>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={6} sm={6}>
           <TextField
             required
             id="name"
@@ -55,7 +56,7 @@ export default function AddressForm() {
             label="Name"
             fullWidth
             autoComplete="given-name"
-            variant="standard"
+            variant="outlined"
             error={onMoveNext && name.length == 0}
             value={name}
             onChange={(e) => {
@@ -64,7 +65,7 @@ export default function AddressForm() {
             }}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={6} sm={6}>
           <TextField
             required
             id="phone"
@@ -72,7 +73,7 @@ export default function AddressForm() {
             label="Phone Number"
             fullWidth
             autoComplete="phone"
-            variant="standard"
+            variant="outlined"
             type="number"
             value={phone}
             onChange={(e) => {
@@ -90,7 +91,7 @@ export default function AddressForm() {
             label="Address line 1"
             fullWidth
             autoComplete="street address"
-            variant="standard"
+            variant="outlined"
             value={address1}
             onChange={(e) => {
               setAddress1(e.target.value);
@@ -106,7 +107,7 @@ export default function AddressForm() {
             label="Address line 2"
             fullWidth
             autoComplete="shipping address-line2"
-            variant="standard"
+            variant="outlined"
             value={address2}
             onChange={(e) => {
               setAddress2(e.target.value);
@@ -122,7 +123,7 @@ export default function AddressForm() {
             label="City"
             fullWidth
             autoComplete="shipping address-level2"
-            variant="standard"
+            variant="outlined"
             value={city}
             onChange={(e) => {
               setCity(e.target.value);
@@ -137,7 +138,7 @@ export default function AddressForm() {
             name="state"
             label="State/Province/Region"
             fullWidth
-            variant="standard"
+            variant="outlined"
             value={state}
             onChange={(e) => {
               setState(e.target.value);
@@ -154,7 +155,7 @@ export default function AddressForm() {
             label="Zip / Postal code"
             fullWidth
             autoComplete="shipping postal-code"
-            variant="standard"
+            variant="outlined"
             type="number"
             value={zip}
             onChange={(e) => {
@@ -172,7 +173,7 @@ export default function AddressForm() {
             label="Country"
             fullWidth
             autoComplete="shipping country"
-            variant="standard"
+            variant="outlined"
             value={country}
             onChange={(e) => {
               setCountry(e.target.value);
@@ -181,7 +182,7 @@ export default function AddressForm() {
             error={onMoveNext && country.length == 0}
           />
         </Grid>
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <FormControlLabel
             control={
               <Checkbox
@@ -193,8 +194,8 @@ export default function AddressForm() {
             }
             label="Use this address for payment details"
           />
-        </Grid>
+        </Grid> */}
       </Grid>
-    </React.Fragment>
+    </Box>
   );
 }

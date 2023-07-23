@@ -2,6 +2,9 @@ import {
   Avatar,
   Box,
   Button,
+  Card,
+  CardActions,
+  CardContent,
   CardMedia,
   Grid,
   Typography,
@@ -44,95 +47,114 @@ const Order = () => {
   };
 
   return (
-    <Box>
-      <Typography variant="h6" gutterBottom>
-        Order Summary
+    <Box sx={{ backgroundColor: "#fff", maxWidth: "500px" }}>
+      <Typography variant="h6" gutterBottom borderBottom={"5px solid #f9f9f9"}>
+        ORDER SUMMARY
       </Typography>
 
-      {cartList.map((cartItem) => (
-        <Grid
-          container
-          alignItems={"center"}
-          p={2}
-          sx={{
-            justifyContent: "space-between",
-            border: "1px dashed #f7f7f7 ",
-            backgroundColor: "#f9f9f9",
-          }}
-          mt={0.4}
-          mb={0.4}
-        >
+      <Box>
+        {cartProducts.length == 0 && (
+          <Box>
+            <Button>Your Cart is Empty</Button>
+          </Box>
+        )}
+
+        {cartList.map((cartItem) => (
           <Grid
-            item
-            xs={12}
-            sm={12}
             container
-            display="flex"
-            gap={2}
-            alignItems={"center"}
-            mb={1}
+            sx={{
+              justifyContent: "space-between",
+            }}
           >
-            <img
-              alt={cartItem.product.name}
-              src={cartItem.product.image}
-              height="60px"
-            />
-            <Typography
-              display="flex"
-              flexDirection={"column"}
-              gap={1}
-              alignItems={"space-around"}
+            <Card
+              sx={{
+                minWidth: 345,
+                borderRadius: "0px",
+                display: "flex",
+                width: "100%",
+                border: "none",
+                borderBottom: "5px solid #fff",
+                boxShadow: "none",
+                backgroundColor: "#f7f7f7",
+              }}
             >
-              {cartItem.product.name}
-              <DeleteOutlinedIcon
-                sx={{ color: "#2db457" }}
-                onClick={(e) => removeCartItemHandler(cartItem.product)}
-              />{" "}
-            </Typography>
-          </Grid>
+              <CardMedia
+                sx={{
+                  width: 100,
+                  backgroundSize: "80px 80px",
+                }}
+                image={cartItem.product.image}
+                title={cartItem.product.name}
+              />
+              <CardContent sx={{ flexBasis: "100%" }}>
+                <Grid
+                  container
+                  justifyContent={"space-between"}
+                  alignItems={"center"}
+                >
+                  <Grid item xs={6}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="div"
+                      sx={{
+                        color: "#030303",
+                        fontSize: "16px",
+                        fontWeight: "normal",
+                      }}
+                    >
+                      {cartItem.product.name}
+                    </Typography>
+                  </Grid>
 
-          <Grid item xs={4} sm={4}>
-            <Grid item alignItems={"center"} display="flex">
-              <Button>
-                <RemoveCircleOutlined
-                  sx={{ color: "#2db457" }}
-                  onClick={(e) => decrementFromCart(cartItem.product)}
-                />
-                <Typography component="span" pl={1} pr={1}>
-                  {cartProduct(cartItem.product)?.quantity}
-                </Typography>
-                <AddCircleOutlinedIcon
-                  sx={{ color: "#2db457" }}
-                  onClick={(e) => addToCartHandler(cartItem.product)}
-                />
-              </Button>
-            </Grid>
-          </Grid>
-          <Grid item xs={4} sm={4}>
-            <Typography display="flex" alignItems={"center"}>
-              <BalanceOutlinedIcon sx={{ color: "#2db457" }} />{" "}
-              <Typography component="span" fontSize="0.8rem">
-                {cartItem.product.weight}
-              </Typography>
-            </Typography>
-          </Grid>
-          <Grid item xs={4} sm={4}>
-            <Typography
-              display="flex"
-              alignItems={"center"}
-              justifyContent={"flex-start"}
-            >
-              <CurrencyRupeeIcon sx={{ color: "#2db457" }} />{" "}
-              <Typography component="span" fontSize="0.9rem">
-                {cartItem.product.price *
-                  cartProduct(cartItem.product)?.quantity!}
-              </Typography>
-            </Typography>
-          </Grid>
-        </Grid>
-      ))}
+                  <Grid item alignItems={"center"} display="flex" xs={4}>
+                    <Button>
+                      <RemoveCircleOutlined
+                        sx={{ color: "#2db457" }}
+                        onClick={(e) => decrementFromCart(cartItem.product)}
+                      />
+                      <Typography component="span" pl={1} pr={1}>
+                        {cartProduct(cartItem.product)?.quantity}
+                      </Typography>
+                      <AddCircleOutlinedIcon
+                        sx={{ color: "#2db457" }}
+                        onClick={(e) => addToCartHandler(cartItem.product)}
+                      />
+                    </Button>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <Typography
+                      display="flex"
+                      alignItems={"center"}
+                      fontSize="1rem"
+                    >
+                      <CurrencyRupeeIcon sx={{ color: "#2db457" }} />{" "}
+                      {cartItem.product.price}
+                    </Typography>
+                  </Grid>
+                </Grid>
 
-      <Grid
+                <Grid
+                  container
+                  alignItems={"space-around"}
+                  justifyContent={"space-between"}
+                >
+                  <Typography
+                    display="flex"
+                    alignItems={"center"}
+                    fontSize="0.9rem"
+                  >
+                    <BalanceOutlinedIcon sx={{ color: "#2db457" }} />{" "}
+                    {cartItem.product.weight}
+                  </Typography>
+                </Grid>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Box>
+
+      {/* <Grid
         container
         justifyContent={"flex-start"}
         fontWeight={"bold"}
@@ -155,7 +177,7 @@ const Order = () => {
             </Typography>
           </Typography>
         </Grid>
-      </Grid>
+      </Grid> */}
     </Box>
   );
 };

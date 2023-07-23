@@ -35,3 +35,9 @@ a {
 .backgroundf7 {
   background-color: #f7f7f7 !important;
 }
+
+h6 {
+  font-size: 0.8rem !important;
+  color: #9b9b9b;
+  letter-spacing: 0.09rem !important;
+}

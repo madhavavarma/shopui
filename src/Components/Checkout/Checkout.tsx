@@ -12,15 +12,16 @@ import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import AddressForm from "./AddressForm";
-import PaymentForm from "./PaymentForm";
-import Review from "./Review";
+import Shipping from "./Shipping";
+import Payment from "./Payment";
+import Review from "./TotalPrice";
 import Order from "./Order";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { IStoreReducer } from "../../models/IStoreReducer";
 import { checkoutActions } from "../../store/CheckoutSlice";
-import { Divider } from "@mui/material";
+import { Divider, Grid } from "@mui/material";
+import TotalPrice from "./TotalPrice";
 
 const steps = ["Review"];
 
@@ -54,51 +55,61 @@ export default function Checkout() {
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <CssBaseline />
-      <AppBar
-        position="absolute"
-        color="default"
-        elevation={0}
-        sx={{
-          position: "relative",
-          borderBottom: (t) => `1px solid ${t.palette.divider}`,
-        }}
-      ></AppBar>
-      <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
-        <Paper
-          variant="outlined"
-          sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
+    <Container sx={{ mb: 4 }}>
+      {/* <Typography variant="h2">Checkout</Typography> */}
+
+      <Grid
+        container
+        display="flex"
+        gap={5}
+        sx={{ backgroundColor: "#fff", padding: "50px 10px" }}
+      >
+        <Grid
+          item
+          flex={1}
+          sx={{ backgroundColor: "#fff" }}
+          display="flex"
+          flexDirection={"column"}
+          justifyContent={"space-between"}
+          gap={5}
         >
-          <Typography component="h1" variant="h4" align="center" mb={4}>
-            Checkout
-          </Typography>
+          <TotalPrice />
 
-          {cartItems.length > 0 && (
-            <React.Fragment>
-              <Order />
-              <Divider />
-              <AddressForm />
-              <Divider />
-              <PaymentForm />
-              <Divider />
-            </React.Fragment>
-          )}
-
-          <React.Fragment>
-            <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-              <Button onClick={backHandler} sx={{ mt: 3, ml: 1 }}>
-                Back
-              </Button>
-              {cartItems.length > 0 && (
-                <Button onClick={placeOrderHandler} sx={{ mt: 3, ml: 1 }}>
-                  Place order
-                </Button>
-              )}
-            </Box>
-          </React.Fragment>
-        </Paper>
-      </Container>
-    </ThemeProvider>
+          <Order />
+          <Button
+            sx={{
+              maxWidth: "500px",
+              backgroundColor: "#2db457",
+              color: "#fff !important",
+              padding: "12px",
+              "&:hover": {
+                color: "#fff !important",
+              },
+            }}
+            onClick={backHandler}
+          >
+            Add More Itmes
+          </Button>
+        </Grid>
+        <Grid item flex={1} display="flex" flexDirection={"column"} gap={5}>
+          <Shipping />
+          <Payment />
+          <Button
+            onClick={placeOrderHandler}
+            sx={{
+              maxWidth: "500px",
+              backgroundColor: "#2db457",
+              color: "#fff !important",
+              padding: "12px",
+              "&:hover": {
+                color: "#fff !important",
+              },
+            }}
+          >
+            Place Order
+          </Button>
+        </Grid>
+      </Grid>
+    </Container>
   );
 }
