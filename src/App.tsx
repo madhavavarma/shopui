@@ -10,19 +10,24 @@ import { Create } from "./Components/Account/Create";
 import Checkout from "./Components/Checkout/Checkout";
 import Detail from "./Components/Products/Detail";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <RootLayout />,
+      children: [
+        { path: "/", element: <Products /> },
+        { path: "/products/:productId", element: <Detail /> },
+        { path: "/login", element: <Login /> },
+        { path: "/create", element: <Create /> },
+        { path: "/checkout", element: <Checkout /> },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <RootLayout />,
-    children: [
-      { path: "/", element: <Products /> },
-      { path: "/products/:productId", element: <Detail /> },
-      { path: "/login", element: <Login /> },
-      { path: "/create", element: <Create /> },
-      { path: "/checkout", element: <Checkout /> },
-    ],
-  },
-]);
+    basename: "/shopui",
+  }
+);
 
 function App() {
   return <RouterProvider router={router} />;
