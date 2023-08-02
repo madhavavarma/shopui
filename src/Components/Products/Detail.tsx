@@ -59,7 +59,7 @@ const ProductDetail = () => {
   };
 
   const decrementFromCart = (product: IProduct) => {
-    dispatch(checkoutActions.decrementFromCart({ product: product }));
+    dispatch(checkoutActions.reduceProductQuantity({ product: product }));
   };
 
   const isProductInCart = (product: IProduct) => {

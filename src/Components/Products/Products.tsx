@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Card,
   CardActions,
@@ -9,7 +10,6 @@ import {
   Typography,
 } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { Categoreis } from "./Categories";
 import { IStoreReducer } from "../../models/IStoreReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { checkoutActions } from "../../store/CheckoutSlice";
@@ -19,6 +19,7 @@ import RemoveCircleOutlined from "@mui/icons-material/RemoveCircleOutlined";
 import BalanceOutlinedIcon from "@mui/icons-material/BalanceOutlined";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import { useNavigate } from "react-router-dom";
+import SubCategories from "./SubCategories";
 
 export const Products = () => {
   var dispatch = useDispatch();
@@ -27,9 +28,14 @@ export const Products = () => {
   var cartProducts = useSelector(
     (store: IStoreReducer) => store.checkout.cartList
   );
-  var activeCategory = useSelector(
-    (store: IStoreReducer) => store.category.active
+
+  const categories = useSelector((store: IStoreReducer) => store.category.list);
+  const active = useSelector((store: IStoreReducer) => store.category.active);
+  const subActive = useSelector(
+    (store: IStoreReducer) => store.category.subActive
   );
+
+  const activeCategory = categories.find((cat) => cat.id == active);
 
   const addToCartHandler = (product: IProduct) => {
     dispatch(checkoutActions.addToCart({ product: product }));
@@ -40,7 +46,7 @@ export const Products = () => {
   };
 
   const decrementFromCart = (product: IProduct) => {
-    dispatch(checkoutActions.decrementFromCart({ product: product }));
+    dispatch(checkoutActions.reduceProductQuantity({ product: product }));
   };
 
   const isProductInCart = (product: IProduct) => {
@@ -57,11 +63,15 @@ export const Products = () => {
 
   return (
     <section className="backgroundf7">
-      <Categoreis />
       <Container>
-        <Grid container mt={1} pt={6} pb={10}>
+        <SubCategories />
+        <Grid container pt={4} pb={10}>
           {products
-            .filter((product) => product.categories.includes(activeCategory))
+            .filter((product) => product.categories.includes(active))
+            .filter(
+              (product) =>
+                subActive == -1 || product.subCategories.includes(subActive)
+            )
             .map((product, index) => {
               return (
                 <Grid

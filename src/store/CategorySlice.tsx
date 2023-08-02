@@ -3,11 +3,19 @@ import { IStoreCategory } from "../models/IStoreCategory";
 
 var initialState: IStoreCategory = {
   list: [
-    { id: 0, name: "Cashews" },
+    {
+      id: 0,
+      name: "Cashews",
+      subCategoreis: [
+        { id: 1, name: "Split" },
+        { id: 2, name: "Jumbo" },
+      ],
+    },
     { id: 1, name: "Vegetables" },
     { id: 2, name: "Fruits" },
   ],
   active: 0,
+  subActive: -1,
 };
 
 const categorySlice = createSlice({
@@ -19,6 +27,10 @@ const categorySlice = createSlice({
     },
     setActive(state, action) {
       state.active = action.payload;
+      state.subActive = -1;
+    },
+    setSubActive(state, action) {
+      state.subActive = action.payload;
     },
   },
 });

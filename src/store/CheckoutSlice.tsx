@@ -49,7 +49,7 @@ var checkoutSlice = createSlice({
         });
       }
     },
-    decrementFromCart(state, action) {
+    reduceProductQuantity(state, action) {
       var product = action.payload.product as IProduct;
       var cartProduct = state.cartList.find(
         (cartItem) => cartItem.product.id == product.id

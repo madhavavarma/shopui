@@ -35,7 +35,7 @@ const Order = () => {
   };
 
   const decrementFromCart = (product: IProduct) => {
-    dispatch(checkoutActions.decrementFromCart({ product: product }));
+    dispatch(checkoutActions.reduceProductQuantity({ product: product }));
   };
 
   const removeCartItemHandler = (product: IProduct) => {
