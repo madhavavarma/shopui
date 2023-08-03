@@ -108,7 +108,7 @@ export const Header = () => {
                           onClick={cartClickHandler}
                           startIcon={<AddShoppingCartIcon />}
                         >
-                          {cart.length}
+                          {cart?.length}
                         </Button>
                         {/* <Button
                           variant="outlined"
