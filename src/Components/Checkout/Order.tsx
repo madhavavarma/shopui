@@ -40,7 +40,7 @@ const Order = () => {
   };
 
   const cartProduct = (product: IProduct) => {
-    return cartProducts.find((cartItem) => cartItem.product.id == product.id);
+    return cartProducts?.find((cartItem) => cartItem.product.id == product.id);
   };
 
   return (

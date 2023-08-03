@@ -30,7 +30,7 @@ const ProductDetail = () => {
 
   const products = useSelector((store: IStoreReducer) => store.product.list);
 
-  const product = products.find((p) => p.id == +productId!)!;
+  const product = products?.find((p) => p.id == +productId!)!;
   var cartProducts = useSelector(
     (store: IStoreReducer) => store.checkout.cartList
   );

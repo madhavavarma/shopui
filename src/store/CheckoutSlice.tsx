@@ -42,7 +42,7 @@ var checkoutSlice = createSlice({
     },
     addToCart(state, action) {
       var product = action.payload.product as IProduct;
-      var cartProduct = state.cartList.find(
+      var cartProduct = state.cartList?.find(
         (cartItem) => cartItem.product.id == product.id
       );
 
@@ -57,7 +57,7 @@ var checkoutSlice = createSlice({
     },
     reduceProductQuantity(state, action) {
       var product = action.payload.product as IProduct;
-      var cartProduct = state.cartList.find(
+      var cartProduct = state.cartList?.find(
         (cartItem) => cartItem.product.id == product.id
       );
 

@@ -11,7 +11,7 @@ const SubCategories = () => {
     (store: IStoreReducer) => store.category.subActive
   );
 
-  const activeCategory = categories.find((cat) => cat.id == active);
+  const activeCategory = categories?.find((cat) => cat.id == active);
 
   const handleCatClick = (id: number) => {
     dispatch(categoryActions.setSubActive(id));
