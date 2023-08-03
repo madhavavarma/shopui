@@ -15,7 +15,10 @@ function isValidShipping(shipping: IShipping) {
   );
 }
 
-const initialState: IStoreCheckout = {
+const loadFromLocalStorage = () =>
+  JSON.parse(window.localStorage.getItem("checkout") || "{}");
+
+const initialState: IStoreCheckout = loadFromLocalStorage() || {
   cartList: [],
   shipping: {
     name: "",
@@ -34,6 +37,9 @@ var checkoutSlice = createSlice({
   initialState,
   reducers: {
     // cart functions
+    setCartList(state, action) {
+      state = action.payload;
+    },
     addToCart(state, action) {
       var product = action.payload.product as IProduct;
       var cartProduct = state.cartList.find(

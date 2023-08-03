@@ -7,6 +7,7 @@ import {
   CardMedia,
   Container,
   Grid,
+  Snackbar,
   Typography,
 } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
@@ -21,11 +22,22 @@ import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import { useNavigate } from "react-router-dom";
 import SubCategories from "./SubCategories";
 import { Categoreis } from "./Categories";
+import React, { useEffect } from "react";
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 export const Products = () => {
   var dispatch = useDispatch();
   var navigate = useNavigate();
+  const [open, setOpen] = React.useState(false);
   var products = useSelector((store: IStoreReducer) => store.product.list);
+
   var cartProducts = useSelector(
     (store: IStoreReducer) => store.checkout.cartList
   );
@@ -36,10 +48,9 @@ export const Products = () => {
     (store: IStoreReducer) => store.category.subActive
   );
 
-  const activeCategory = categories.find((cat) => cat.id == active);
-
   const addToCartHandler = (product: IProduct) => {
     dispatch(checkoutActions.addToCart({ product: product }));
+    setOpen(true);
   };
 
   const incrementQuantity = (product: IProduct) => {
@@ -62,8 +73,25 @@ export const Products = () => {
     navigate("/products/" + product.id);
   };
 
+  const handleSnackbarClose = () => {
+    setOpen(false);
+  };
+
   return (
     <section className="backgroundf7">
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+      >
+        <Alert
+          onClose={handleSnackbarClose}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
+          Item Added to Cart. Click on cart to checkout
+        </Alert>
+      </Snackbar>
       <Categoreis />
 
       <Container>
@@ -121,14 +149,6 @@ export const Products = () => {
                         >
                           {product.name}
                         </Typography>
-                        <Typography
-                          display="flex"
-                          alignItems={"center"}
-                          fontSize="0.9rem"
-                        >
-                          <BalanceOutlinedIcon sx={{ color: "#2db457" }} />{" "}
-                          {product.weight}
-                        </Typography>
 
                         <Typography
                           display="flex"
@@ -154,12 +174,20 @@ export const Products = () => {
                         alignItems={"space-around"}
                         justifyContent={"space-between"}
                       >
-                        <Button
+                        <Typography
+                          display="flex"
+                          alignItems={"center"}
+                          fontSize="0.9rem"
+                        >
+                          <BalanceOutlinedIcon sx={{ color: "#2db457" }} />{" "}
+                          {product.weight}
+                        </Typography>
+                        {/* <Button
                           size="small"
                           onClick={(e) => onViewClickHandler(product)}
                         >
                           View
-                        </Button>
+                        </Button> */}
                         {isProductInCart(product) && (
                           <Grid item alignItems={"center"} display="flex">
                             <Button>

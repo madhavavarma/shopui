@@ -82,8 +82,11 @@ export default function Checkout() {
               backgroundColor: "#2db457",
               color: "#fff !important",
               padding: "12px",
+              opacity: 0.8,
               "&:hover": {
+                backgroundColor: "#2db457",
                 color: "#fff !important",
+                opacity: 1,
               },
             }}
             onClick={backHandler}
@@ -96,13 +99,18 @@ export default function Checkout() {
           <Payment />
           <Button
             onClick={placeOrderHandler}
+            disabled={cartItems.length < 1}
             sx={{
               maxWidth: "500px",
               backgroundColor: "#2db457",
               color: "#fff !important",
+              opacity: 0.8,
+
               padding: "12px",
               "&:hover": {
+                backgroundColor: "#2db457",
                 color: "#fff !important",
+                opacity: 1,
               },
             }}
           >

@@ -9,8 +9,6 @@ export const Categoreis = () => {
   const categories = useSelector((store: IStoreReducer) => store.category.list);
   const active = useSelector((store: IStoreReducer) => store.category.active);
 
-  const activeCategory = categories.find((cat) => cat.id == active);
-
   const handleCategoryClick = (id: number) => {
     dispatch(categoryActions.setActive(id));
   };

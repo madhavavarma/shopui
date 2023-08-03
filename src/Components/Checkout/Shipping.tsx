@@ -59,6 +59,7 @@ export default function Shipping() {
             variant="outlined"
             error={onMoveNext && name.length == 0}
             value={name}
+            color="success"
             onChange={(e) => {
               setName(e.target.value);
               setShipping();
@@ -76,6 +77,7 @@ export default function Shipping() {
             variant="outlined"
             type="number"
             value={phone}
+            color="success"
             onChange={(e) => {
               setPhone(e.target.value);
               setShipping();
@@ -93,6 +95,7 @@ export default function Shipping() {
             autoComplete="street address"
             variant="outlined"
             value={address1}
+            color="success"
             onChange={(e) => {
               setAddress1(e.target.value);
               setShipping();
@@ -109,6 +112,7 @@ export default function Shipping() {
             autoComplete="shipping address-line2"
             variant="outlined"
             value={address2}
+            color="success"
             onChange={(e) => {
               setAddress2(e.target.value);
               setShipping();
@@ -125,6 +129,7 @@ export default function Shipping() {
             autoComplete="shipping address-level2"
             variant="outlined"
             value={city}
+            color="success"
             onChange={(e) => {
               setCity(e.target.value);
               setShipping();
@@ -140,6 +145,7 @@ export default function Shipping() {
             fullWidth
             variant="outlined"
             value={state}
+            color="success"
             onChange={(e) => {
               setState(e.target.value);
               setShipping();
@@ -158,6 +164,7 @@ export default function Shipping() {
             variant="outlined"
             type="number"
             value={zip}
+            color="success"
             onChange={(e) => {
               setZip(e.target.value);
               setShipping();
@@ -175,6 +182,7 @@ export default function Shipping() {
             autoComplete="shipping country"
             variant="outlined"
             value={country}
+            color="success"
             onChange={(e) => {
               setCountry(e.target.value);
               setShipping();

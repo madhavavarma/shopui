@@ -8,7 +8,7 @@ const productList = [
     price: "600",
     description:
       "Cashews are rich in nutrients and may offer several health benefits. Selecting the right varieties and cooking or preparing them properly can help maximize their potential effects on health",
-    image: "./cashew1.jpeg",
+    image: "/cashew1.jpeg",
     categories: [0],
     subCategories: [2],
   },
@@ -19,7 +19,7 @@ const productList = [
     price: "300",
     description:
       "Cashews are rich in nutrients and may offer several health benefits. Selecting the right varieties and cooking or preparing them properly can help maximize their potential effects on health",
-    image: "./cashew2.jpeg",
+    image: "/cashew2.jpeg",
     categories: [0],
     subCategories: [2],
   },
@@ -30,7 +30,7 @@ const productList = [
     price: "550",
     description:
       "Cashews are rich in nutrients and may offer several health benefits. Selecting the right varieties and cooking or preparing them properly can help maximize their potential effects on health",
-    image: "./cashew3.jpeg",
+    image: "/cashew3.jpeg",
     categories: [0],
     subCategories: [1],
   },
@@ -41,7 +41,7 @@ const productList = [
     price: "250",
     description:
       "Cashews are rich in nutrients and may offer several health benefits. Selecting the right varieties and cooking or preparing them properly can help maximize their potential effects on health",
-    image: "./cashew4.jpeg",
+    image: "/cashew4.jpeg",
     categories: [0],
     subCategories: [1],
   },
@@ -52,7 +52,7 @@ const productList = [
     price: "5000",
     description:
       "Cashews are rich in nutrients and may offer several health benefits. Selecting the right varieties and cooking or preparing them properly can help maximize their potential effects on health",
-    image: "./cashew1.jpeg",
+    image: "/cashew1.jpeg",
     categories: [0, 1],
     subCategories: [1],
   },
@@ -64,7 +64,7 @@ const productList = [
     price: "5000",
     description:
       "Cashews are rich in nutrients and may offer several health benefits. Selecting the right varieties and cooking or preparing them properly can help maximize their potential effects on health",
-    image: "./cashew2.jpeg",
+    image: "/cashew2.jpeg",
     categories: [0, 1],
     subCategories: [1],
   },
@@ -76,7 +76,7 @@ const productList = [
     price: "5000",
     description:
       "Cashews are rich in nutrients and may offer several health benefits. Selecting the right varieties and cooking or preparing them properly can help maximize their potential effects on health",
-    image: "./cashew3.jpeg",
+    image: "/cashew3.jpeg",
     categories: [0],
     subCategories: [1],
   },
@@ -88,7 +88,7 @@ const productList = [
     price: "5000",
     description:
       "Cashews are rich in nutrients and may offer several health benefits. Selecting the right varieties and cooking or preparing them properly can help maximize their potential effects on health",
-    image: "./cashew4.jpeg",
+    image: "/cashew4.jpeg",
     categories: [0],
     subCategories: [1],
   },

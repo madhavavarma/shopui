@@ -22,16 +22,25 @@ export default function Payment() {
             >
               <FormControlLabel
                 value="cod"
-                control={<Radio />}
-                label="Cash on Delivery"
+                control={
+                  <Radio
+                    sx={{
+                      color: "#2db457",
+                      "&.Mui-checked": {
+                        color: "#2db457",
+                      },
+                    }}
+                  />
+                }
+                label="UPI Payment on Delivery"
                 checked
               />
-              <FormControlLabel
+              {/* <FormControlLabel
                 value="pay"
                 control={<Radio />}
                 label="Pay via UPI/Netbanking/Cards"
                 disabled
-              />
+              /> */}
             </RadioGroup>
           </FormControl>
         </Grid>
