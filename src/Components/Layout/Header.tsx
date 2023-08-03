@@ -115,13 +115,12 @@ export const Header = () => {
                   </Grid>
                 </Container>
                 <Divider />
-                <Categoreis />
               </Box>
             </Toolbar>
           </AppBar>
         </Box>
       </ElevationScroll>
-      <Box mt={16}></Box>
+      <Box mt={8}></Box>
     </header>
   );
 };

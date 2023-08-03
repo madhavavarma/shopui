@@ -14,14 +14,14 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Shipping from "./Shipping";
 import Payment from "./Payment";
-import Review from "./TotalPrice";
+import Review from "./Billing";
 import Order from "./Order";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { IStoreReducer } from "../../models/IStoreReducer";
 import { checkoutActions } from "../../store/CheckoutSlice";
 import { Divider, Grid } from "@mui/material";
-import TotalPrice from "./TotalPrice";
+import TotalPrice from "./Billing";
 
 const steps = ["Review"];
 

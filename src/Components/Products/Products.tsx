@@ -20,6 +20,7 @@ import BalanceOutlinedIcon from "@mui/icons-material/BalanceOutlined";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import { useNavigate } from "react-router-dom";
 import SubCategories from "./SubCategories";
+import { Categoreis } from "./Categories";
 
 export const Products = () => {
   var dispatch = useDispatch();
@@ -63,6 +64,8 @@ export const Products = () => {
 
   return (
     <section className="backgroundf7">
+      <Categoreis />
+
       <Container>
         <SubCategories />
         <Grid container pt={4} pb={10}>

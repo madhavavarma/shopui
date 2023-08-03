@@ -22,9 +22,6 @@ import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 
 const Order = () => {
   var dispatch = useDispatch();
-  const cartList = useSelector(
-    (store: IStoreReducer) => store.checkout.cartList
-  );
 
   var cartProducts = useSelector(
     (store: IStoreReducer) => store.checkout.cartList
@@ -59,7 +56,7 @@ const Order = () => {
           </Box>
         )}
 
-        {cartList.map((cartItem) => (
+        {cartProducts.map((cartItem) => (
           <Grid
             container
             sx={{
@@ -129,7 +126,7 @@ const Order = () => {
                       fontSize="1rem"
                     >
                       <CurrencyRupeeIcon sx={{ color: "#2db457" }} />{" "}
-                      {cartItem.product.price}
+                      {cartItem.product.price * cartItem.quantity}
                     </Typography>
                   </Grid>
                 </Grid>

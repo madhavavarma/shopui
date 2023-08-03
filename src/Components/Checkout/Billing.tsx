@@ -1,12 +1,17 @@
-import * as React from "react";
-
-import Order from "./Order";
-import Shipping from "./Shipping";
-import Payment from "./Payment";
 import { Box, Grid, Typography } from "@mui/material";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
+import { useSelector } from "react-redux";
+import { IStoreReducer } from "../../models/IStoreReducer";
 
-export default function TotalPrice() {
+export default function Billing() {
+  var cartProducts = useSelector(
+    (store: IStoreReducer) => store.checkout.cartList
+  );
+
+  const orderAmount = cartProducts
+    .map((cartProd) => cartProd.product.price * cartProd.quantity)
+    .reduce((partialSum, a) => partialSum + a, 0);
+
   return (
     <Box display="flex" flexDirection="column" sx={{ maxWidth: "500px" }}>
       <Typography
@@ -15,7 +20,7 @@ export default function TotalPrice() {
         gutterBottom
         borderBottom={"5px solid #f9f9f9"}
       >
-        PRICING
+        BILLING
       </Typography>
       <Grid container sx={{ paddingLeft: "10px" }}>
         <Grid
@@ -35,7 +40,7 @@ export default function TotalPrice() {
           <Grid item xs={6}>
             <Typography display={"flex"}>
               <CurrencyRupeeIcon sx={{ color: "#2db457" }} />
-              900
+              {orderAmount}
             </Typography>
           </Grid>
           <Grid item xs={6}>
@@ -44,7 +49,7 @@ export default function TotalPrice() {
           <Grid item xs={6}>
             <Typography display={"flex"}>
               <CurrencyRupeeIcon sx={{ color: "#2db457" }} />
-              50
+              {0}
             </Typography>
           </Grid>
           <Grid item xs={6}>
@@ -53,7 +58,7 @@ export default function TotalPrice() {
           <Grid item xs={6}>
             <Typography display={"flex"}>
               <CurrencyRupeeIcon sx={{ color: "#2db457" }} />
-              950
+              {orderAmount}
             </Typography>
           </Grid>
         </Grid>
