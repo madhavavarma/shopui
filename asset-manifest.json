@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/shopui/static/js/main.46296ee5.js",
+    "main.js": "/shopui/static/js/main.57b6b36b.js",
     "index.html": "/shopui/index.html",
-    "main.46296ee5.js.map": "/shopui/static/js/main.46296ee5.js.map"
+    "main.57b6b36b.js.map": "/shopui/static/js/main.57b6b36b.js.map"
   },
   "entrypoints": [
-    "static/js/main.46296ee5.js"
+    "static/js/main.57b6b36b.js"
   ]
 }
