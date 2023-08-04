@@ -15,22 +15,28 @@ function isValidShipping(shipping: IShipping) {
   );
 }
 
-const loadFromLocalStorage = () =>
-  JSON.parse(window.localStorage.getItem("checkout") || "{}");
-
-const initialState: IStoreCheckout = loadFromLocalStorage() || {
-  cartList: [],
-  shipping: {
-    name: "",
-    address1: "",
-    address2: "",
-    city: "",
-    country: "India",
-    phone: "",
-    state: "Andhra Pradesh",
-    zip: "",
-  },
+const loadFromLocalStorage = () => {
+  console.log(window.localStorage.getItem("checkout"));
+  try {
+    return JSON.parse(window.localStorage.getItem("checkout") || "");
+  } catch {
+    return {
+      cartList: [],
+      shipping: {
+        name: "",
+        address1: "",
+        address2: "",
+        city: "",
+        country: "India",
+        phone: "",
+        state: "Andhra Pradesh",
+        zip: "",
+      },
+    };
+  }
 };
+
+const initialState: IStoreCheckout = loadFromLocalStorage();
 
 var checkoutSlice = createSlice({
   name: "checkout",

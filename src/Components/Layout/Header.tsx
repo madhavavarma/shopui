@@ -89,7 +89,7 @@ export const Header = () => {
                     >
                       <Avatar
                         alt="Fresh Cuts"
-                        src="/freshCut.jpg"
+                        src="./freshCut.jpg"
                         sx={{ width: 40, height: 40 }}
                       />
                       <Typography
