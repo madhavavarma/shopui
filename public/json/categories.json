@@ -3,8 +3,8 @@
     "id": 1,
     "categoryName": "Cashews",
     "subCategories": [
-      { "id": 1, "categoryName": "Split" },
-      { "id": 2, "categoryName": "Jumbo" }
+      { "id": 1, "categoryId": 1, "categoryName": "Split" },
+      { "id": 2, "categoryId": 1, "categoryName": "Jumbo" }
     ]
   },
   { "id": 2, "categoryName": "Vegetables" },

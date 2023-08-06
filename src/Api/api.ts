@@ -3,7 +3,7 @@ import { Dispatch } from "react";
 import { ProductActions } from "../store/ProductSlice";
 import { categoryActions } from "../store/CategorySlice";
 
-const isMock = true;
+const isMock = false;
 
 const getProductsApi = isMock
   ? "./json/products.json"

@@ -1,7 +1,7 @@
-import { Category } from "./ICategory";
+import { ICategory } from "./ICategory";
 
 export interface IStoreCategory {
-  list: Category[];
+  list: ICategory[];
   active: number;
   subActive: number;
 }
