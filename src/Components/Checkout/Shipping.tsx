@@ -18,7 +18,7 @@ export default function Shipping() {
   );
   const onMoveNext = true;
 
-  const [name, setName] = useState(shipping.name);
+  const [userName, setUserName] = useState(shipping.userName);
   const [phone, setPhone] = useState(shipping.phone);
   const [address1, setAddress1] = useState(shipping.address1);
   const [address2, setAddress2] = useState(shipping.address2);
@@ -30,7 +30,7 @@ export default function Shipping() {
   const setShipping = () => {
     dispatch(
       checkoutActions.setShipping({
-        name: name,
+        userName,
         phone,
         address1,
         address2,
@@ -51,17 +51,17 @@ export default function Shipping() {
         <Grid item xs={6} sm={6}>
           <TextField
             required
-            id="name"
-            name="name"
+            id="userName"
+            name="userName"
             label="Name"
             fullWidth
             autoComplete="given-name"
             variant="outlined"
-            error={onMoveNext && name.length == 0}
-            value={name}
+            error={onMoveNext && userName?.length == 0}
+            value={userName}
             color="success"
             onChange={(e) => {
-              setName(e.target.value);
+              setUserName(e.target.value);
               setShipping();
             }}
           />

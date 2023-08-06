@@ -5,7 +5,7 @@ import { IShipping } from "../models/IShipping";
 
 function isValidShipping(shipping: IShipping) {
   return (
-    shipping.name.length > 0 &&
+    shipping.userName.length > 0 &&
     shipping.phone.length > 0 &&
     shipping.address1.length > 0 &&
     shipping.state.length > 0 &&
@@ -22,7 +22,7 @@ const loadFromLocalStorage = () => {
     return {
       cartList: [],
       shipping: {
-        name: "",
+        userName: "",
         address1: "",
         address2: "",
         city: "",
@@ -91,7 +91,7 @@ var checkoutSlice = createSlice({
     reset(state) {
       state.cartList = [];
       state.shipping = {
-        name: "",
+        userName: "",
         address1: "",
         address2: "",
         city: "",

@@ -22,6 +22,7 @@ import { IStoreReducer } from "../../models/IStoreReducer";
 import { checkoutActions } from "../../store/CheckoutSlice";
 import { Divider, Grid } from "@mui/material";
 import TotalPrice from "./Billing";
+import { postCheckout } from "../../Api/api";
 
 const steps = ["Review"];
 
@@ -52,7 +53,8 @@ export default function Checkout() {
   };
 
   const placeOrderHandler = () => {
-    console.log(checkout);
+    console.log(JSON.stringify(checkout));
+    postCheckout(dispatch, checkout);
     dispatch(checkoutActions.reset());
     navigate("/");
   };
