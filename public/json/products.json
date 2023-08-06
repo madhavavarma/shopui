@@ -1,0 +1,84 @@
+[
+  {
+    "id": 1,
+    "productName": "Cashews Jumbo",
+    "weight": "1kg",
+    "price": "600",
+    "productDescription": "Cashews are rich in nutrients and may offer several health benefits. Selecting the right varieties and cooking or preparing them properly can help maximize their potential effects on health",
+    "image": "./images/cashew1.jpeg",
+    "categories": [1],
+    "subCategories": [2]
+  },
+  {
+    "id": 2,
+    "productName": "Cashews Jumbo",
+    "weight": "500gm",
+    "price": "300",
+    "productDescription": "Cashews are rich in nutrients and may offer several health benefits. Selecting the right varieties and cooking or preparing them properly can help maximize their potential effects on health",
+    "image": "./images/cashew2.jpeg",
+    "categories": [1],
+    "subCategories": [2]
+  },
+  {
+    "id": 3,
+    "productName": "Cashews Split",
+    "weight": "1kg",
+    "price": "550",
+    "productDescription": "Cashews are rich in nutrients and may offer several health benefits. Selecting the right varieties and cooking or preparing them properly can help maximize their potential effects on health",
+    "image": "./images/cashew3.jpeg",
+    "categories": [1],
+    "subCategories": [1]
+  },
+  {
+    "id": 4,
+    "productName": "Cashews Split",
+    "weight": "500gm",
+    "price": "250",
+    "productDescription": "Cashews are rich in nutrients and may offer several health benefits. Selecting the right varieties and cooking or preparing them properly can help maximize their potential effects on health",
+    "image": "./images/cashew4.jpeg",
+    "categories": [1],
+    "subCategories": [1]
+  },
+  {
+    "id": 5,
+    "productName": "Cashews Split",
+    "weight": "10kg",
+    "price": "5000",
+    "productDescription": "Cashews are rich in nutrients and may offer several health benefits. Selecting the right varieties and cooking or preparing them properly can help maximize their potential effects on health",
+    "image": "./images/cashew1.jpeg",
+    "categories": [0, 1],
+    "subCategories": [1]
+  },
+
+  {
+    "id": 6,
+    "productName": "Cashews Split",
+    "weight": "10kg",
+    "price": "5000",
+    "productDescription": "Cashews are rich in nutrients and may offer several health benefits. Selecting the right varieties and cooking or preparing them properly can help maximize their potential effects on health",
+    "image": "./images/cashew2.jpeg",
+    "categories": [0, 1],
+    "subCategories": [1]
+  },
+
+  {
+    "id": 7,
+    "productName": "Cashews Split",
+    "weight": "10kg",
+    "price": "5000",
+    "productDescription": "Cashews are rich in nutrients and may offer several health benefits. Selecting the right varieties and cooking or preparing them properly can help maximize their potential effects on health",
+    "image": "./images/cashew3.jpeg",
+    "categories": [1],
+    "subCategories": [1]
+  },
+  {
+    "id": 8,
+    "productName": "Cashews Split",
+    "weight": "10kg",
+    "price": "5000",
+    "productDescription": "Cashews are rich in nutrients and may offer several health benefits. Selecting the right varieties and cooking or preparing them properly can help maximize their potential effects on health",
+    "image": "./images/cashew4.jpeg",
+    "categories": [1],
+    "subCategories": [1]
+  }
+]

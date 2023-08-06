@@ -81,7 +81,7 @@ const Order = () => {
                   backgroundSize: "80px 80px",
                 }}
                 image={cartItem.product.image}
-                title={cartItem.product.name}
+                title={cartItem.product.productName}
               />
               <CardContent sx={{ flexBasis: "100%" }}>
                 <Grid
@@ -100,7 +100,7 @@ const Order = () => {
                         fontWeight: "normal",
                       }}
                     >
-                      {cartItem.product.name}
+                      {cartItem.product.productName}
                     </Typography>
                   </Grid>
 

@@ -24,6 +24,8 @@ import SubCategories from "./SubCategories";
 import { Categoreis } from "./Categories";
 import React, { useEffect } from "react";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
+import { Api } from "@mui/icons-material";
+import { getProducts } from "../../Api/api";
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -97,132 +99,133 @@ export const Products = () => {
       <Container>
         <SubCategories />
         <Grid container pt={4} pb={10}>
-          {products
-            .filter((product) => product.categories.includes(active))
-            .filter(
-              (product) =>
-                subActive == -1 || product.subCategories.includes(subActive)
-            )
-            .map((product, index) => {
-              return (
-                <Grid
-                  key={index}
-                  item
-                  xs={12}
-                  sm={12}
-                  md={4}
-                  sx={{
-                    opacity: "0.9",
-                    "&:hover": {
-                      opacity: "1",
-                    },
-                  }}
-                >
-                  <Card
+          {products &&
+            products
+              .filter((product) => product.categories?.includes(active))
+              .filter(
+                (product) =>
+                  subActive == -1 || product.subCategories?.includes(subActive)
+              )
+              .map((product, index) => {
+                return (
+                  <Grid
+                    key={index}
+                    item
+                    xs={12}
+                    sm={12}
+                    md={4}
                     sx={{
-                      minWidth: 345,
-                      borderRadius: "0px",
-                      border: "1px solid #f7f7f7",
+                      opacity: "0.9",
+                      "&:hover": {
+                        opacity: "1",
+                      },
                     }}
                   >
-                    <CardMedia
-                      sx={{ height: 240, backgroundSize: "200px 200px" }}
-                      image={product.image}
-                      title={product.name}
-                    />
-                    <CardContent>
-                      <Grid
-                        container
-                        justifyContent={"space-between"}
-                        alignItems={"center"}
-                        gap={2}
-                      >
-                        <Typography
-                          gutterBottom
-                          variant="h5"
-                          component="div"
-                          sx={{
-                            color: "#030303",
-                            fontSize: "19px",
-                            fontWeight: "normal",
-                          }}
+                    <Card
+                      sx={{
+                        minWidth: 345,
+                        borderRadius: "0px",
+                        border: "1px solid #f7f7f7",
+                      }}
+                    >
+                      <CardMedia
+                        sx={{ height: 240, backgroundSize: "200px 200px" }}
+                        image={product.image}
+                        title={product.productName}
+                      />
+                      <CardContent>
+                        <Grid
+                          container
+                          justifyContent={"space-between"}
+                          alignItems={"center"}
+                          gap={2}
                         >
-                          {product.name}
-                        </Typography>
+                          <Typography
+                            gutterBottom
+                            variant="h5"
+                            component="div"
+                            sx={{
+                              color: "#030303",
+                              fontSize: "19px",
+                              fontWeight: "normal",
+                            }}
+                          >
+                            {product.productName}
+                          </Typography>
 
+                          <Typography
+                            display="flex"
+                            alignItems={"center"}
+                            fontSize="1.1rem"
+                          >
+                            <CurrencyRupeeIcon sx={{ color: "#2db457" }} />{" "}
+                            {product.price}
+                          </Typography>
+                        </Grid>
                         <Typography
-                          display="flex"
-                          alignItems={"center"}
-                          fontSize="1.1rem"
+                          variant="body2"
+                          color="text.secondary"
+                          mt={1}
+                          sx={{ height: "80px" }}
                         >
-                          <CurrencyRupeeIcon sx={{ color: "#2db457" }} />{" "}
-                          {product.price}
+                          {product.productDescription}
                         </Typography>
-                      </Grid>
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"
-                        mt={1}
-                        sx={{ height: "80px" }}
-                      >
-                        {product.description}
-                      </Typography>
-                    </CardContent>
-                    <CardActions sx={{ padding: "8px 16px" }}>
-                      <Grid
-                        container
-                        alignItems={"space-around"}
-                        justifyContent={"space-between"}
-                      >
-                        <Typography
-                          display="flex"
-                          alignItems={"center"}
-                          fontSize="0.9rem"
+                      </CardContent>
+                      <CardActions sx={{ padding: "8px 16px" }}>
+                        <Grid
+                          container
+                          alignItems={"space-around"}
+                          justifyContent={"space-between"}
                         >
-                          <BalanceOutlinedIcon sx={{ color: "#2db457" }} />{" "}
-                          {product.weight}
-                        </Typography>
-                        {/* <Button
+                          <Typography
+                            display="flex"
+                            alignItems={"center"}
+                            fontSize="0.9rem"
+                          >
+                            <BalanceOutlinedIcon sx={{ color: "#2db457" }} />{" "}
+                            {product.weight}
+                          </Typography>
+                          {/* <Button
                           size="small"
                           onClick={(e) => onViewClickHandler(product)}
                         >
                           View
                         </Button> */}
-                        {isProductInCart(product) && (
-                          <Grid item alignItems={"center"} display="flex">
-                            <Button>
-                              <RemoveCircleOutlined
-                                sx={{ color: "#2db457" }}
-                                onClick={(e) => decrementFromCart(product)}
-                              />
-                              <Typography component="span" pl={1} pr={1}>
-                                {cartProduct(product)?.quantity}
-                              </Typography>
-                              <AddCircleOutlinedIcon
-                                sx={{ color: "#2db457" }}
+                          {isProductInCart(product) && (
+                            <Grid item alignItems={"center"} display="flex">
+                              <Button>
+                                <RemoveCircleOutlined
+                                  sx={{ color: "#2db457" }}
+                                  onClick={(e) => decrementFromCart(product)}
+                                />
+                                <Typography component="span" pl={1} pr={1}>
+                                  {cartProduct(product)?.quantity}
+                                </Typography>
+                                <AddCircleOutlinedIcon
+                                  sx={{ color: "#2db457" }}
+                                  onClick={(e) => addToCartHandler(product)}
+                                />
+                              </Button>
+                            </Grid>
+                          )}
+                          {!isProductInCart(product) && (
+                            <Grid item>
+                              <Button
+                                variant="outlined"
                                 onClick={(e) => addToCartHandler(product)}
-                              />
-                            </Button>
-                          </Grid>
-                        )}
-                        {!isProductInCart(product) && (
-                          <Grid item>
-                            <Button
-                              variant="outlined"
-                              onClick={(e) => addToCartHandler(product)}
-                              startIcon={<AddShoppingCartIcon />}
-                              sx={{ padding: "6px 15px" }}
-                            >
-                              ADD
-                            </Button>
-                          </Grid>
-                        )}
-                      </Grid>
-                    </CardActions>
-                  </Card>
-                </Grid>
-              );
-            })}
+                                startIcon={<AddShoppingCartIcon />}
+                                sx={{ padding: "6px 15px" }}
+                              >
+                                ADD
+                              </Button>
+                            </Grid>
+                          )}
+                        </Grid>
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                );
+              })}
         </Grid>
       </Container>
     </section>

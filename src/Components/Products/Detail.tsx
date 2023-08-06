@@ -76,19 +76,19 @@ const ProductDetail = () => {
         <Grid item xs={12} sm={6}>
           <img
             src={product.image}
-            alt={product.name}
+            alt={product.productName}
             style={{ width: "100%", maxWidth: 300 }}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <Typography variant="h5" gutterBottom>
-            {product.name}
+            {product.productName}
           </Typography>
           <Typography variant="subtitle1" gutterBottom>
             Price: ${product.price}
           </Typography>
           <Typography variant="body1" gutterBottom>
-            {product.description}
+            {product.productDescription}
           </Typography>
           <Grid
             container

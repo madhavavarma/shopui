@@ -16,7 +16,6 @@ function isValidShipping(shipping: IShipping) {
 }
 
 const loadFromLocalStorage = () => {
-  console.log(window.localStorage.getItem("checkout"));
   try {
     return JSON.parse(window.localStorage.getItem("checkout") || "");
   } catch {

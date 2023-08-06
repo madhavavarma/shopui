@@ -15,9 +15,10 @@ import {
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useNavigate } from "react-router-dom";
 import { IStoreReducer } from "../../models/IStoreReducer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { Categoreis } from "../Products/Categories";
+import { getCategories, getProducts } from "../../Api/api";
 
 interface Props {
   /**
@@ -63,6 +64,13 @@ export const Header = () => {
     localStorage.setItem("checkout", JSON.stringify(checkout));
   }, [checkout]);
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getProducts(dispatch);
+    getCategories(dispatch);
+  }, []);
+
   return (
     <header>
       <ElevationScroll>
@@ -89,7 +97,7 @@ export const Header = () => {
                     >
                       <Avatar
                         alt="Fresh Cuts"
-                        src="./freshCut.jpg"
+                        src="./images/freshCut.jpg"
                         sx={{ width: 40, height: 40 }}
                       />
                       <Typography

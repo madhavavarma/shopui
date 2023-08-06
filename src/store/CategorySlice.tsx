@@ -2,19 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { IStoreCategory } from "../models/IStoreCategory";
 
 var initialState: IStoreCategory = {
-  list: [
-    {
-      id: 0,
-      name: "Cashews",
-      subCategoreis: [
-        { id: 1, name: "Split" },
-        { id: 2, name: "Jumbo" },
-      ],
-    },
-    { id: 1, name: "Vegetables" },
-    { id: 2, name: "Fruits" },
-  ],
-  active: 0,
+  list: [],
+  active: 1,
   subActive: -1,
 };
 

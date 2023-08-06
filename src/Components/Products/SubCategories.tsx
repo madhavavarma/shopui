@@ -32,8 +32,8 @@ const SubCategories = () => {
         >
           {"ALL"}
         </Button>
-        {activeCategory?.subCategoreis?.map((subCat) => (
-          <Grid item xs="auto">
+        {activeCategory?.subCategories?.map((subCat) => (
+          <Grid item xs="auto" key={subCat.id}>
             <Button
               onClick={(e) => handleCatClick(subCat.id)}
               sx={{
@@ -45,7 +45,7 @@ const SubCategories = () => {
                 letterSpacing: 0.6,
               }}
             >
-              {subCat.name}
+              {subCat.categoryName}
             </Button>
           </Grid>
         ))}

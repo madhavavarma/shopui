@@ -41,6 +41,8 @@ export default function Checkout() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const checkout = useSelector((store: IStoreReducer) => store.checkout);
+
   const cartItems = useSelector(
     (store: IStoreReducer) => store.checkout.cartList
   );
@@ -50,6 +52,7 @@ export default function Checkout() {
   };
 
   const placeOrderHandler = () => {
+    console.log(checkout);
     dispatch(checkoutActions.reset());
     navigate("/");
   };

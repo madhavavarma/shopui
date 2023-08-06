@@ -20,7 +20,7 @@ export const Categoreis = () => {
           <Grid display="flex" flexDirection="column">
             <Grid display="flex" gap={2} alignItems={"center"}>
               {categories.map((x) => (
-                <Grid item xs="auto">
+                <Grid item xs="auto" key={x.id}>
                   <Link
                     href="#"
                     underline="none"
@@ -45,7 +45,7 @@ export const Categoreis = () => {
                       },
                     }}
                   >
-                    {x.name}
+                    {x.categoryName}
                   </Link>
                 </Grid>
               ))}

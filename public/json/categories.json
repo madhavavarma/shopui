@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "categoryName": "Cashews",
+    "subCategories": [
+      { "id": 1, "categoryName": "Split" },
+      { "id": 2, "categoryName": "Jumbo" }
+    ]
+  },
+  { "id": 2, "categoryName": "Vegetables" },
+  { "id": 3, "categoryName": "Fruits" }
+]
