@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.js": "/static/js/main.91212bec.js",
-    "index.html": "/index.html",
-    "main.91212bec.js.map": "/static/js/main.91212bec.js.map"
+    "main.js": "/shopui/static/js/main.91212bec.js",
+    "index.html": "/shopui/index.html",
+    "main.91212bec.js.map": "/shopui/static/js/main.91212bec.js.map"
   },
   "entrypoints": [
     "static/js/main.91212bec.js"
