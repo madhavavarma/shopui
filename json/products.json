@@ -15,7 +15,7 @@
     "weight": "500gm",
     "price": "300",
     "productDescription": "Cashews are rich in nutrients and may offer several health benefits. Selecting the right varieties and cooking or preparing them properly can help maximize their potential effects on health",
-    "image": "./images/cashew.jpg",
+    "image": "./images/cashew5.jpg",
     "categories": [1],
     "subCategories": [2]
   },
@@ -35,7 +35,7 @@
     "weight": "500gm",
     "price": "250",
     "productDescription": "Cashews are rich in nutrients and may offer several health benefits. Selecting the right varieties and cooking or preparing them properly can help maximize their potential effects on health",
-    "image": "./images/cashew.jpg",
+    "image": "./images/cashew5.jpg",
     "categories": [1],
     "subCategories": [1]
   },
@@ -56,7 +56,7 @@
     "weight": "10kg",
     "price": "5000",
     "productDescription": "Cashews are rich in nutrients and may offer several health benefits. Selecting the right varieties and cooking or preparing them properly can help maximize their potential effects on health",
-    "image": "./images/cashew.jpg",
+    "image": "./images/cashew5.jpg",
     "categories": [1],
     "subCategories": [1]
   },
@@ -77,7 +77,7 @@
     "weight": "10kg",
     "price": "5000",
     "productDescription": "Cashews are rich in nutrients and may offer several health benefits. Selecting the right varieties and cooking or preparing them properly can help maximize their potential effects on health",
-    "image": "./images/cashew.jpg",
+    "image": "./images/cashew5.jpg",
     "categories": [1],
     "subCategories": [1]
   }
