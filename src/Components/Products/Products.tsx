@@ -129,7 +129,7 @@ export const Products = () => {
                       }}
                     >
                       <CardMedia
-                        sx={{ height: 240, backgroundSize: "200px 200px" }}
+                        sx={{ height: 240, backgroundSize: "250px 250px" }}
                         image={product.image}
                         title={product.productName}
                       />

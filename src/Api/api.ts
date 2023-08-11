@@ -4,17 +4,17 @@ import { ProductActions } from "../store/ProductSlice";
 import { categoryActions } from "../store/CategorySlice";
 import { IStoreCheckout } from "../models/IStoreCheckout";
 
-const isMock = true;
+const isMock = false;
 
 const getProductsApi = isMock
   ? "./json/products.json"
-  : "http://localhost:5098/api/Products";
+  : "https://villageahar.azurewebsites.net/api/Products";
 const getCategoriesApi = isMock
   ? "./json/categories.json"
-  : "http://localhost:5098/api/Categories";
+  : "https://villageahar.azurewebsites.net/api/Categories";
 const postCheckoutApi = isMock
   ? "./json/checkout.json"
-  : "http://localhost:5098/api/Checkout";
+  : "https://villageahar.azurewebsites.net/api/Checkout";
 
 export async function getProducts(dispatch: Dispatch<AnyAction>) {
   await fetch(getProductsApi)
