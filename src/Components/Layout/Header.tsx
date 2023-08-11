@@ -85,7 +85,7 @@ export const Header = () => {
                 sx={{ backgroundColor: "#fff", width: "100%" }}
               >
                 <Container>
-                  <Grid display="flex" pt={2} pb={1} alignItems="center">
+                  <Grid display="flex" pt={1} alignItems="center">
                     <Grid
                       item
                       xs={6}
@@ -97,16 +97,17 @@ export const Header = () => {
                     >
                       <Avatar
                         alt="Village Ahar"
-                        src="./images/freshCut.jpg"
-                        sx={{ width: 40, height: 40 }}
+                        src="./images/valogo.png"
+                        sx={{ width: "5.5rem", height: "5.5rem" }}
+                        variant="square"
                       />
-                      <Typography
+                      {/* <Typography
                         fontSize={"1.3rem"}
                         fontWeight={"bold"}
                         sx={{ cursor: "pointer", color: "black" }}
                       >
                         Village Ahar
-                      </Typography>
+                      </Typography> */}
                     </Grid>
                     <Grid item xs></Grid>
                     <Grid item xs="auto" alignItems="right">
@@ -134,7 +135,7 @@ export const Header = () => {
           </AppBar>
         </Box>
       </ElevationScroll>
-      <Box mt={8}></Box>
+      <Box mt={12}></Box>
     </header>
   );
 };
