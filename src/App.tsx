@@ -9,6 +9,7 @@ import { RootLayout } from "./RootLayout";
 import { Create } from "./Components/Account/Create";
 import Checkout from "./Components/Checkout/Checkout";
 import Detail from "./Components/Products/Detail";
+import ThankYou from "./Components/Checkout/ThankYou";
 
 const router = createHashRouter([
   {
@@ -20,6 +21,7 @@ const router = createHashRouter([
       { path: "/login", element: <Login /> },
       { path: "/create", element: <Create /> },
       { path: "/checkout", element: <Checkout /> },
+      { path: "/thankyou", element: <ThankYou /> },
     ],
   },
 ]);

@@ -56,7 +56,7 @@ export default function Checkout() {
     console.log(JSON.stringify(checkout));
     postCheckout(dispatch, checkout);
     dispatch(checkoutActions.reset());
-    navigate("/");
+    navigate("/thankyou");
   };
 
   return (
