@@ -96,7 +96,7 @@ export const Header = () => {
                       sx={{ position: "relative", left: "-12px" }}
                     >
                       <Avatar
-                        alt="Fresh Cuts"
+                        alt="Village Ahar"
                         src="./images/freshCut.jpg"
                         sx={{ width: 40, height: 40 }}
                       />
@@ -105,7 +105,7 @@ export const Header = () => {
                         fontWeight={"bold"}
                         sx={{ cursor: "pointer", color: "black" }}
                       >
-                        Fresh Cuts
+                        Village Ahar
                       </Typography>
                     </Grid>
                     <Grid item xs></Grid>

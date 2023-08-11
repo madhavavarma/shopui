@@ -10,7 +10,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" textAlign={"center"}>
       {"Copyright © "}
-      FRESH CUTS {new Date().getFullYear()}
+      Village Ahar {new Date().getFullYear()}
       {"."}
     </Typography>
   );
