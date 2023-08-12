@@ -9,13 +9,13 @@ const isMock = false;
 
 const getProductsApi = isMock
   ? "./json/products.json"
-  : "https://villageahar.azurewebsites.net/api/Products";
+  : "http://localhost:5098/api/Products";
 const getCategoriesApi = isMock
   ? "./json/categories.json"
-  : "https://villageahar.azurewebsites.net/api/Categories";
+  : "http://localhost:5098/api/Categories";
 const postCheckoutApi = isMock
   ? "./json/checkout.json"
-  : "https://villageahar.azurewebsites.net/api/Checkout";
+  : "http://localhost:5098/api/Checkout";
 
 export async function getProducts(dispatch: Dispatch<AnyAction>) {
   dispatch(layoutActions.showLoader());

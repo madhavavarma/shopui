@@ -75,7 +75,7 @@ const ProductDetail = () => {
       <Grid container spacing={3} mt={6}>
         <Grid item xs={12} sm={6}>
           <img
-            src={product.image}
+            src={product.images[product.selectImage]}
             alt={product.productName}
             style={{ width: "100%", maxWidth: 300 }}
           />

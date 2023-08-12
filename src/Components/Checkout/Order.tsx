@@ -80,7 +80,7 @@ const Order = () => {
                   width: 100,
                   backgroundSize: "80px 80px",
                 }}
-                image={cartItem.product.image}
+                image={cartItem.product.images[0]}
                 title={cartItem.product.productName}
               />
               <CardContent sx={{ flexBasis: "100%" }}>

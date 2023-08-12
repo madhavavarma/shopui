@@ -26,6 +26,7 @@ import React, { useEffect } from "react";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import { Api } from "@mui/icons-material";
 import { getProducts } from "../../Api/api";
+import productSlice from "../../store/ProductSlice";
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -77,6 +78,12 @@ export const Products = () => {
     navigate("/checkout");
   };
 
+  const handleproductImageClick = (product: IProduct, index: number) => {
+    dispatch(
+      productSlice.actions.setProductImage({ id: product.id, index: index })
+    );
+  };
+
   return (
     <section className="backgroundf7">
       <Snackbar
@@ -124,9 +131,28 @@ export const Products = () => {
                     >
                       <CardMedia
                         sx={{ height: 240, backgroundSize: "250px 250px" }}
-                        image={product.image}
+                        image={product.images[product.selectImage]}
                         title={product.productName}
                       />
+                      <Box display="flex" justifyContent={"flex-end"} pr={2}>
+                        {product.images.map((image, index) => (
+                          <img
+                            src={product.images[index]}
+                            height={50}
+                            width={50}
+                            title={product.productName}
+                            onClick={() =>
+                              handleproductImageClick(product, index)
+                            }
+                            style={{
+                              border:
+                                index == product.selectImage
+                                  ? "1px dotted #2db457"
+                                  : "",
+                            }}
+                          />
+                        ))}
+                      </Box>
                       <CardContent>
                         <Grid
                           container

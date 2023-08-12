@@ -4,7 +4,8 @@ export interface IProduct {
   weight: string;
   price: number;
   productDescription: string;
-  image: string;
+  images: string[];
   categories: number[];
   subCategories: number[];
+  selectImage: number;
 }
