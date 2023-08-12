@@ -37,7 +37,6 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 export const Products = () => {
   var dispatch = useDispatch();
   var navigate = useNavigate();
-  const [open, setOpen] = React.useState(false);
   var products = useSelector((store: IStoreReducer) => store.product.list);
 
   var cartProducts = useSelector(
@@ -52,7 +51,6 @@ export const Products = () => {
 
   const addToCartHandler = (product: IProduct) => {
     dispatch(checkoutActions.addToCart({ product: product }));
-    setOpen(true);
   };
 
   const incrementQuantity = (product: IProduct) => {
@@ -75,23 +73,19 @@ export const Products = () => {
     navigate("/products/" + product.id);
   };
 
-  const handleSnackbarClose = () => {
-    setOpen(false);
+  const handleSnackbarClick = () => {
+    navigate("/checkout");
   };
 
   return (
     <section className="backgroundf7">
       <Snackbar
-        open={open}
-        autoHideDuration={6000}
-        onClose={handleSnackbarClose}
+        open={cartProducts.length > 0}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        onClick={handleSnackbarClick}
       >
-        <Alert
-          onClose={handleSnackbarClose}
-          severity="success"
-          sx={{ width: "100%" }}
-        >
-          Item Added to Cart. Click on cart to checkout
+        <Alert severity="success" sx={{ width: "100%" }}>
+          {cartProducts.length} item(s) in Cart. Tap to Checkout
         </Alert>
       </Snackbar>
       <Categoreis />
@@ -145,9 +139,9 @@ export const Products = () => {
                             variant="h5"
                             component="div"
                             sx={{
-                              color: "#030303",
-                              fontSize: "19px",
-                              fontWeight: "normal",
+                              color: "#4c4c4c",
+                              fontSize: "1.5rem",
+                              fontWeight: "900",
                             }}
                           >
                             {product.productName}
@@ -156,7 +150,8 @@ export const Products = () => {
                           <Typography
                             display="flex"
                             alignItems={"center"}
-                            fontSize="1.1rem"
+                            fontSize="2rem"
+                            color="#ff3f40"
                           >
                             <CurrencyRupeeIcon sx={{ color: "#2db457" }} />{" "}
                             {product.price}
@@ -166,7 +161,7 @@ export const Products = () => {
                           variant="body2"
                           color="text.secondary"
                           mt={1}
-                          sx={{ height: "80px" }}
+                          sx={{ height: "80px", fontSize: "0.8rem !important" }}
                         >
                           {product.productDescription}
                         </Typography>
@@ -180,7 +175,8 @@ export const Products = () => {
                           <Typography
                             display="flex"
                             alignItems={"center"}
-                            fontSize="0.9rem"
+                            fontSize="1.6rem"
+                            color="#ff3f40"
                           >
                             <BalanceOutlinedIcon sx={{ color: "#2db457" }} />{" "}
                             {product.weight}
@@ -214,7 +210,12 @@ export const Products = () => {
                                 variant="outlined"
                                 onClick={(e) => addToCartHandler(product)}
                                 startIcon={<AddShoppingCartIcon />}
-                                sx={{ padding: "6px 15px" }}
+                                sx={{
+                                  padding: "6px 15px",
+                                  backgroundColor: "#2db457",
+                                  color: "#fff !important",
+                                  border: "none !important",
+                                }}
                               >
                                 ADD
                               </Button>

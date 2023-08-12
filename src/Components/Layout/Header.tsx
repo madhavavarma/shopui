@@ -123,13 +123,18 @@ export const Header = () => {
                     <Grid item xs></Grid>
                     <Grid item xs="auto" alignItems="right">
                       <Stack direction="row" spacing={2}>
-                        <Button
+                        <Typography
+                          sx={{ color: "#2db457", fontSize: "1.5rem" }}
+                        >
+                          Fresh Food to Home
+                        </Typography>
+                        {/* <Button
                           variant="outlined"
                           onClick={cartClickHandler}
                           startIcon={<AddShoppingCartIcon />}
                         >
                           {cart?.length}
-                        </Button>
+                        </Button> */}
                         {/* <Button
                           variant="outlined"
                           onClick={accountClickHandler}

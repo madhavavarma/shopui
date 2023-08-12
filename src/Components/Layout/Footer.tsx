@@ -16,37 +16,32 @@ function Copyright() {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
-
 export default function Footer() {
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <CssBaseline />
+
       <Box
+        component="footer"
         sx={{
-          display: "flex",
-          flexDirection: "column",
+          py: 3,
+          px: 2,
+          mt: "auto",
+          backgroundColor: (theme) =>
+            theme.palette.mode === "light"
+              ? theme.palette.grey[200]
+              : theme.palette.grey[800],
         }}
       >
-        <CssBaseline />
-
-        <Box
-          component="footer"
-          sx={{
-            py: 3,
-            px: 2,
-            mt: "auto",
-            backgroundColor: (theme) =>
-              theme.palette.mode === "light"
-                ? theme.palette.grey[200]
-                : theme.palette.grey[800],
-          }}
-        >
-          <Container maxWidth="sm">
-            <Copyright />
-          </Container>
-        </Box>
+        <Container maxWidth="sm">
+          <Copyright />
+        </Container>
       </Box>
-    </ThemeProvider>
+    </Box>
   );
 }

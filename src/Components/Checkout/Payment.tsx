@@ -32,7 +32,7 @@ export default function Payment() {
                     }}
                   />
                 }
-                label="UPI Payment on Delivery"
+                label="UPI (Phonepe, GPay) | Cash - on Delivery"
                 checked
               />
               {/* <FormControlLabel

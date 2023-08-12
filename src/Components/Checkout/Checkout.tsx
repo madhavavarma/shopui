@@ -35,9 +35,6 @@ function getStepContent(step: number) {
   }
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
-
 export default function Checkout() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
