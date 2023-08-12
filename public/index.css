@@ -23,9 +23,9 @@ a {
 }
 
 /* Increase the specificity */
-.Link:hover {
+/* .Link:hover {
   color: white;
-}
+} */
 
 .navClass {
   background-color: #2db457 !important;

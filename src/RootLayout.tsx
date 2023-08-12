@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import Footer from "./Components/Layout/Footer";
+import ScrollToTop from "./Helpers/ScrollToTop";
 
 export const RootLayout = () => {
   const defaultTheme = createTheme({
@@ -17,12 +18,14 @@ export const RootLayout = () => {
   return (
     <ThemeProvider theme={defaultTheme}>
       <Provider store={store}>
-        <Grid display="flex" minHeight="100%" flexDirection={"column"}>
-          <Header />
-          <Box sx={{ flex: "1", backgroundColor: "#f7f7f7" }}>
-            <Outlet />
-          </Box>
-        </Grid>
+        <ScrollToTop>
+          <Grid display="flex" minHeight="100%" flexDirection={"column"}>
+            <Header />
+            <Box sx={{ flex: "1", backgroundColor: "#f7f7f7" }}>
+              <Outlet />
+            </Box>
+          </Grid>
+        </ScrollToTop>
         <Footer />
       </Provider>
     </ThemeProvider>

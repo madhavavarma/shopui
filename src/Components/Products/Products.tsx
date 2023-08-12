@@ -84,6 +84,10 @@ export const Products = () => {
     );
   };
 
+  const orderAmount = cartProducts
+    .map((cartProd) => cartProd.product.price * cartProd.quantity)
+    .reduce((partialSum, a) => partialSum + a, 0);
+
   return (
     <section className="backgroundf7">
       <Snackbar
@@ -91,8 +95,21 @@ export const Products = () => {
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         onClick={handleSnackbarClick}
       >
-        <Alert severity="success" sx={{ width: "100%" }}>
-          {cartProducts.length} item(s) in Cart. Tap to Checkout
+        <Alert
+          severity="success"
+          sx={{
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            cursor: "pointer",
+          }}
+        >
+          <Typography component="span">
+            {cartProducts.length} item(s) | &#x20B9;{orderAmount}
+          </Typography>
+          <Typography component="span" ml={4}>
+            Checkout
+          </Typography>
         </Alert>
       </Snackbar>
       <Categoreis />
@@ -241,6 +258,11 @@ export const Products = () => {
                                   backgroundColor: "#2db457",
                                   color: "#fff !important",
                                   border: "none !important",
+                                  "&:hover": {
+                                    backgroundColor: "#2db457",
+                                    color: "#fff !important",
+                                    opacity: 1,
+                                  },
                                 }}
                               >
                                 ADD

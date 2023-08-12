@@ -20,7 +20,10 @@ export default function Billing() {
         gutterBottom
         borderBottom={"5px solid #f9f9f9"}
       >
-        BILLING
+        BILLING | Total Amount:
+        <Typography component={"span"} fontSize={"1.2rem"} color={"#ff3f40"}>
+          &#x20B9;{orderAmount}
+        </Typography>
       </Typography>
       <Grid container sx={{ paddingLeft: "10px" }}>
         <Grid
@@ -44,7 +47,7 @@ export default function Billing() {
             </Typography>
           </Grid>
           <Grid item xs={6}>
-            <Typography variant="h6">SHIPPING CHARGES</Typography>
+            <Typography variant="h6">SHIPPING</Typography>
           </Grid>
           <Grid item xs={6}>
             <Typography display={"flex"}>
