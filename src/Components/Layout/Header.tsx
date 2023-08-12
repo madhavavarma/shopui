@@ -1,8 +1,10 @@
 import {
   AppBar,
   Avatar,
+  Backdrop,
   Box,
   Button,
+  CircularProgress,
   Container,
   Divider,
   Grid,
@@ -45,6 +47,7 @@ function ElevationScroll(props: Props) {
 export const Header = () => {
   const navigate = useNavigate();
   const cart = useSelector((state: IStoreReducer) => state.checkout.cartList);
+  const loader = useSelector((state: IStoreReducer) => state.layout.loader);
 
   const logoClickHandler = () => {
     navigate("/");
@@ -73,6 +76,14 @@ export const Header = () => {
 
   return (
     <header>
+      <aside>
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={loader}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      </aside>
       <ElevationScroll>
         <Box>
           <AppBar sx={{ backgroundColor: "#f9f9f9", padding: "0" }}>
