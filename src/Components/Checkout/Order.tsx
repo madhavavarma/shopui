@@ -46,7 +46,7 @@ const Order = () => {
   return (
     <Box sx={{ backgroundColor: "#fff", maxWidth: "500px" }}>
       <Typography variant="h6" gutterBottom borderBottom={"5px solid #f9f9f9"}>
-        ORDER SUMMARY
+        CART | {cartProducts.length} item(s)
       </Typography>
 
       <Box>
@@ -89,46 +89,27 @@ const Order = () => {
                   justifyContent={"space-between"}
                   alignItems={"center"}
                 >
-                  <Grid item xs={6}>
-                    <Typography
-                      gutterBottom
-                      variant="h5"
-                      component="div"
-                      sx={{
-                        color: "#030303",
-                        fontSize: "16px",
-                        fontWeight: "normal",
-                      }}
-                    >
-                      {cartItem.product.productName}
-                    </Typography>
-                  </Grid>
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    component="div"
+                    sx={{
+                      color: "#030303",
+                      fontSize: "16px",
+                      fontWeight: "normal",
+                    }}
+                  >
+                    {cartItem.product.productName}
+                  </Typography>
 
-                  <Grid item alignItems={"center"} display="flex" xs={4}>
-                    <Button>
-                      <RemoveCircleOutlined
-                        sx={{ color: "#2db457" }}
-                        onClick={(e) => decrementFromCart(cartItem.product)}
-                      />
-                      <Typography component="span" pl={1} pr={1}>
-                        {cartProduct(cartItem.product)?.quantity}
-                      </Typography>
-                      <AddCircleOutlinedIcon
-                        sx={{ color: "#2db457" }}
-                        onClick={(e) => addToCartHandler(cartItem.product)}
-                      />
-                    </Button>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <Typography
-                      display="flex"
-                      alignItems={"center"}
-                      fontSize="1rem"
-                    >
-                      <CurrencyRupeeIcon sx={{ color: "#2db457" }} />{" "}
-                      {cartItem.product.price * cartItem.quantity}
-                    </Typography>
-                  </Grid>
+                  <Typography
+                    display="flex"
+                    alignItems={"center"}
+                    fontSize="1rem"
+                  >
+                    <CurrencyRupeeIcon sx={{ color: "#2db457" }} />{" "}
+                    {cartItem.product.price * cartItem.quantity}
+                  </Typography>
                 </Grid>
 
                 <Grid
@@ -136,6 +117,19 @@ const Order = () => {
                   alignItems={"space-around"}
                   justifyContent={"space-between"}
                 >
+                  <Button>
+                    <RemoveCircleOutlined
+                      sx={{ color: "#2db457" }}
+                      onClick={(e) => decrementFromCart(cartItem.product)}
+                    />
+                    <Typography component="span" pl={1} pr={1}>
+                      {cartProduct(cartItem.product)?.quantity}
+                    </Typography>
+                    <AddCircleOutlinedIcon
+                      sx={{ color: "#2db457" }}
+                      onClick={(e) => addToCartHandler(cartItem.product)}
+                    />
+                  </Button>
                   <Typography
                     display="flex"
                     alignItems={"center"}
