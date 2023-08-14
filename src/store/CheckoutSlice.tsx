@@ -25,11 +25,11 @@ const loadFromLocalStorage = () => {
         userName: "",
         address1: "",
         address2: "",
-        city: "",
+        city: "Pithapuram",
         country: "India",
         phone: "",
         state: "Andhra Pradesh",
-        zip: "",
+        zip: "533450",
       },
     };
   }

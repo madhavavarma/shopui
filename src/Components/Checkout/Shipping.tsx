@@ -92,7 +92,7 @@ export default function Shipping() {
             name="address1"
             label="Address line 1"
             fullWidth
-            autoComplete="street address"
+            autoComplete="Streetaddress"
             variant="outlined"
             value={address1}
             color="success"
@@ -121,6 +121,7 @@ export default function Shipping() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            disabled
             required
             id="city"
             name="city"
@@ -139,6 +140,7 @@ export default function Shipping() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            disabled
             id="state"
             name="state"
             label="State/Province/Region"
@@ -155,6 +157,7 @@ export default function Shipping() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            disabled
             required
             id="zip"
             name="zip"
@@ -174,6 +177,7 @@ export default function Shipping() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            disabled
             required
             id="country"
             name="country"

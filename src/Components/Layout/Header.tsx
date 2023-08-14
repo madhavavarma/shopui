@@ -8,6 +8,7 @@ import {
   Container,
   Divider,
   Grid,
+  Icon,
   Slide,
   Stack,
   Toolbar,
@@ -126,7 +127,7 @@ export const Header = () => {
                         <Typography
                           sx={{ color: "#2db457", fontSize: "1.5rem" }}
                         >
-                          Fresh Food to Home
+                          Fresh Food to Home <br />
                         </Typography>
                         {/* <Button
                           variant="outlined"

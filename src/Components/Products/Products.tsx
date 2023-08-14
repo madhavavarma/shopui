@@ -126,19 +126,7 @@ export const Products = () => {
               )
               .map((product, index) => {
                 return (
-                  <Grid
-                    key={index}
-                    item
-                    xs={12}
-                    sm={12}
-                    md={4}
-                    sx={{
-                      opacity: "0.9",
-                      "&:hover": {
-                        opacity: "1",
-                      },
-                    }}
-                  >
+                  <Grid key={index} item xs={12} sm={12} md={4}>
                     <Card
                       sx={{
                         minWidth: 345,
@@ -147,7 +135,7 @@ export const Products = () => {
                       }}
                     >
                       <CardMedia
-                        sx={{ height: 240, backgroundSize: "250px 250px" }}
+                        sx={{ height: 300, backgroundSize: "fit" }}
                         image={product.images[product.selectImage]}
                         title={product.productName}
                       />
@@ -155,18 +143,12 @@ export const Products = () => {
                         {product.images.map((image, index) => (
                           <img
                             src={product.images[index]}
-                            height={50}
-                            width={50}
+                            height={60}
+                            width={80}
                             title={product.productName}
                             onClick={() =>
                               handleproductImageClick(product, index)
                             }
-                            style={{
-                              border:
-                                index == product.selectImage
-                                  ? "1px dotted #2db457"
-                                  : "",
-                            }}
                           />
                         ))}
                       </Box>
@@ -261,7 +243,6 @@ export const Products = () => {
                                   "&:hover": {
                                     backgroundColor: "#2db457",
                                     color: "#fff !important",
-                                    opacity: 1,
                                   },
                                 }}
                               >

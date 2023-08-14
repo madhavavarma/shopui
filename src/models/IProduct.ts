@@ -8,4 +8,5 @@ export interface IProduct {
   categories: number[];
   subCategories: number[];
   selectImage: number;
+  isActive: boolean;
 }
