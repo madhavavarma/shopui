@@ -9,10 +9,10 @@ const isMock = false;
 
 const getProductsApi = isMock
   ? "./json/products.json"
-  : "https://villageahar.azurewebsites.net/api/Products";
+  : "https://villageahar.azurewebsites.net/api/Products/get";
 const getCategoriesApi = isMock
   ? "./json/categories.json"
-  : "https://villageahar.azurewebsites.net/api/Categories";
+  : "https://villageahar.azurewebsites.net/api/Categories/get";
 const postCheckoutApi = isMock
   ? "./json/checkout.json"
   : "https://villageahar.azurewebsites.net/api/Checkout";
