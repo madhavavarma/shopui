@@ -126,32 +126,37 @@ export const Products = () => {
               )
               .map((product, index) => {
                 return (
-                  <Grid key={index} item xs={12} sm={12} md={4}>
+                  <Grid key={index} item xs={12} sm={12} md={3}>
                     <Card
                       sx={{
-                        minWidth: 345,
+                        minWidth: 200,
                         borderRadius: "0px",
-                        border: "1px solid #f7f7f7",
+                        borderBottom: "1px solid grey",
                       }}
                     >
                       <CardMedia
-                        sx={{ height: 300, backgroundSize: "fit" }}
+                        sx={{
+                          width: "100%",
+                          height: "200px",
+                          backgroundSize: "100% 100%",
+                        }}
                         image={product.images[product.selectImage]}
                         title={product.productName}
                       />
-                      <Box display="flex" justifyContent={"flex-end"} pr={2}>
+
+                      {/* <Box display="flex" justifyContent={"flex-end"} pr={2}>
                         {product.images.map((image, index) => (
                           <img
                             src={product.images[index]}
-                            height={60}
-                            width={80}
+                            height={40}
+                            width={60}
                             title={product.productName}
                             onClick={() =>
                               handleproductImageClick(product, index)
                             }
                           />
                         ))}
-                      </Box>
+                      </Box> */}
                       <CardContent>
                         <Grid
                           container
@@ -165,31 +170,21 @@ export const Products = () => {
                             component="div"
                             sx={{
                               color: "#4c4c4c",
-                              fontSize: "1.5rem",
+                              fontSize: "1rem",
                               fontWeight: "900",
                             }}
                           >
                             {product.productName}
                           </Typography>
-
-                          <Typography
-                            display="flex"
-                            alignItems={"center"}
-                            fontSize="2rem"
-                            color="#ff3f40"
-                          >
-                            <CurrencyRupeeIcon sx={{ color: "#2db457" }} />{" "}
-                            {product.price}
-                          </Typography>
                         </Grid>
-                        <Typography
+                        {/* <Typography
                           variant="body2"
                           color="text.secondary"
                           mt={1}
                           sx={{ height: "80px", fontSize: "0.8rem !important" }}
                         >
                           {product.productDescription}
-                        </Typography>
+                        </Typography> */}
                       </CardContent>
                       <CardActions sx={{ padding: "8px 16px" }}>
                         <Grid
@@ -200,11 +195,20 @@ export const Products = () => {
                           <Typography
                             display="flex"
                             alignItems={"center"}
-                            fontSize="1.6rem"
+                            fontSize="1rem"
                             color="#ff3f40"
                           >
                             <BalanceOutlinedIcon sx={{ color: "#2db457" }} />{" "}
                             {product.weight}
+                          </Typography>
+                          <Typography
+                            display="flex"
+                            alignItems={"center"}
+                            fontSize="1rem"
+                            color="#ff3f40"
+                          >
+                            <CurrencyRupeeIcon sx={{ color: "#2db457" }} />{" "}
+                            {product.price}
                           </Typography>
                           {/* <Button
                           size="small"

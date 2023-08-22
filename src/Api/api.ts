@@ -33,7 +33,6 @@ export async function getCategories(dispatch: Dispatch<AnyAction>) {
     .then((response) => response.json())
     .then((json) => {
       dispatch(categoryActions.setList(json));
-      dispatch(categoryActions.setActive(1));
     });
   dispatch(layoutActions.hideLoader());
 }
