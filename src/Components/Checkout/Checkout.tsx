@@ -76,7 +76,7 @@ export default function Checkout() {
           gap={5}
         >
           <TotalPrice />
-
+          <Divider />
           <Order />
           <Button
             sx={{
@@ -98,6 +98,7 @@ export default function Checkout() {
         </Grid>
         <Grid item flex={1} display="flex" flexDirection={"column"} gap={5}>
           <Shipping />
+          <Divider />
           <Payment />
           <Button
             onClick={placeOrderHandler}

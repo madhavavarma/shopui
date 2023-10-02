@@ -9,7 +9,7 @@ import { Box, FormControl, FormLabel, Radio, RadioGroup } from "@mui/material";
 export default function Payment() {
   return (
     <Box sx={{ maxWidth: "500px" }}>
-      <Typography variant="h6" gutterBottom borderBottom={"5px solid #f9f9f9"}>
+      <Typography variant="h6" gutterBottom>
         PAYMENT METHOD
       </Typography>
       <Grid container spacing={3}>

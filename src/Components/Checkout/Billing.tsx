@@ -14,12 +14,7 @@ export default function Billing() {
 
   return (
     <Box display="flex" flexDirection="column" sx={{ maxWidth: "500px" }}>
-      <Typography
-        variant="h6"
-        mb={4}
-        gutterBottom
-        borderBottom={"5px solid #f9f9f9"}
-      >
+      <Typography variant="h6" mb={4} gutterBottom>
         BILLING | Total Amount:
         <Typography component={"span"} fontSize={"1.2rem"} color={"#ff3f40"}>
           &#x20B9;{orderAmount}

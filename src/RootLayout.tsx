@@ -10,7 +10,7 @@ export const RootLayout = () => {
   const defaultTheme = createTheme({
     typography: {
       allVariants: {
-        fontFamily: "Raleway",
+        fontFamily: "Roboto",
       },
     },
   });

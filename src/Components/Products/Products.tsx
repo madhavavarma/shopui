@@ -116,7 +116,7 @@ export const Products = () => {
 
       <Container>
         <SubCategories />
-        <Grid container pt={4} pb={10}>
+        <Grid container pt={4} pb={10} spacing={1}>
           {products &&
             products
               .filter((product) => product.categories?.includes(active))
@@ -126,10 +126,10 @@ export const Products = () => {
               )
               .map((product, index) => {
                 return (
-                  <Grid key={index} item xs={12} sm={12} md={3}>
+                  <Grid key={index} item xs={6} sm={6} md={3}>
                     <Card
                       sx={{
-                        minWidth: 200,
+                        minWidth: 150,
                         borderRadius: "0px",
                         borderBottom: "1px solid grey",
                       }}
@@ -137,7 +137,7 @@ export const Products = () => {
                       <CardMedia
                         sx={{
                           width: "100%",
-                          height: "200px",
+                          height: "150px",
                           backgroundSize: "100% 100%",
                         }}
                         image={product.images[product.selectImage]}
@@ -170,11 +170,12 @@ export const Products = () => {
                             component="div"
                             sx={{
                               color: "#4c4c4c",
-                              fontSize: "1rem",
+                              fontSize: "0.8rem",
                               fontWeight: "900",
+                              minHeight: "40px",
                             }}
                           >
-                            {product.productName}
+                            {product.productName} - {product.weight}
                           </Typography>
                         </Grid>
                         {/* <Typography
@@ -192,15 +193,15 @@ export const Products = () => {
                           alignItems={"space-around"}
                           justifyContent={"space-between"}
                         >
-                          <Typography
+                          {/* <Typography
                             display="flex"
                             alignItems={"center"}
-                            fontSize="1rem"
+                            fontSize="0.8rem"
                             color="#ff3f40"
                           >
                             <BalanceOutlinedIcon sx={{ color: "#2db457" }} />{" "}
                             {product.weight}
-                          </Typography>
+                          </Typography> */}
                           <Typography
                             display="flex"
                             alignItems={"center"}
@@ -218,7 +219,12 @@ export const Products = () => {
                         </Button> */}
                           {isProductInCart(product) && (
                             <Grid item alignItems={"center"} display="flex">
-                              <Button>
+                              <Button
+                                sx={{
+                                  padding: "1px 2px",
+                                  fontSize: "0.8rem",
+                                }}
+                              >
                                 <RemoveCircleOutlined
                                   sx={{ color: "#2db457" }}
                                   onClick={(e) => decrementFromCart(product)}
@@ -240,10 +246,11 @@ export const Products = () => {
                                 onClick={(e) => addToCartHandler(product)}
                                 startIcon={<AddShoppingCartIcon />}
                                 sx={{
-                                  padding: "6px 15px",
+                                  padding: "4px 8px",
                                   backgroundColor: "#2db457",
                                   color: "#fff !important",
                                   border: "none !important",
+                                  fontSize: "0.7rem",
                                   "&:hover": {
                                     backgroundColor: "#2db457",
                                     color: "#fff !important",

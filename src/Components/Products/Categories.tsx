@@ -4,6 +4,7 @@ import { IStoreReducer } from "../../models/IStoreReducer";
 import { ProductActions } from "../../store/ProductSlice";
 import { categoryActions } from "../../store/CategorySlice";
 import { ICategory } from "../../models/ICategory";
+import { useEffect, useState } from "react";
 
 export const Categoreis = () => {
   const dispatch = useDispatch();
@@ -14,9 +15,31 @@ export const Categoreis = () => {
     dispatch(categoryActions.setActive(id));
   };
 
+  var navBar = document.getElementById("nav");
+  const [sticky, setSticky] = useState(navBar?.offsetTop || 0);
+
+  useEffect(() => {
+    setSticky(navBar?.offsetTop || 0);
+  }, [navBar]);
+
+  window.onscroll = function () {
+    myFunction();
+  };
+
+  const myFunction = () => {
+    if (window.pageYOffset - 2 >= sticky) {
+      navBar?.classList.add("sticky");
+    } else {
+      navBar?.classList.remove("sticky");
+    }
+  };
+
   return (
-    <nav>
-      <Box className="navClass" sx={{ overflowX: "auto" }}>
+    <nav id="nav" style={{ overflow: "hidden", height: "50px" }}>
+      <Box
+        className="navClass"
+        sx={{ overflowY: "hidden", overflowX: "scroll", height: "70px" }}
+      >
         <Container>
           <Grid display="flex" flexDirection="column">
             <Grid display="flex" gap={2} alignItems={"center"}>

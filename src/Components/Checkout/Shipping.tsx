@@ -19,10 +19,10 @@ export default function Shipping() {
   const [phone, setPhone] = useState(shipping.phone);
   const [address1, setAddress1] = useState(shipping.address1);
   const [address2, setAddress2] = useState(shipping.address2);
-  const [city, setCity] = useState(shipping.city);
-  const [state, setState] = useState(shipping.state);
-  const [zip, setZip] = useState(shipping.zip);
-  const [country, setCountry] = useState(shipping.country);
+  const [city, setCity] = useState(shipping.city || "Pithapuram");
+  const [state, setState] = useState(shipping.state || "Andhra Pradesh");
+  const [zip, setZip] = useState(shipping.zip || "533450");
+  const [country, setCountry] = useState(shipping.country || "India");
 
   const setShipping = () => {
     dispatch(
@@ -41,28 +41,10 @@ export default function Shipping() {
 
   return (
     <Box sx={{ maxWidth: "500px" }}>
-      <Typography variant="h6" gutterBottom borderBottom={"5px solid #f9f9f9"}>
+      <Typography variant="h6" gutterBottom>
         SHIPPING DETAILS
       </Typography>
       <Grid container spacing={3}>
-        <Grid item xs={6} sm={6}>
-          <TextField
-            required
-            id="userName"
-            name="userName"
-            label="Name"
-            fullWidth
-            autoComplete="given-name"
-            variant="outlined"
-            error={onMoveNext && userName?.length == 0}
-            value={userName}
-            color="success"
-            onChange={(e) => {
-              setUserName(e.target.value);
-              setShipping();
-            }}
-          />
-        </Grid>
         <Grid item xs={6} sm={6}>
           <TextField
             required
@@ -80,6 +62,24 @@ export default function Shipping() {
               setShipping();
             }}
             error={onMoveNext && phone.length == 0}
+          />
+        </Grid>
+        <Grid item xs={6} sm={6}>
+          <TextField
+            required
+            id="userName"
+            name="userName"
+            label="Name"
+            fullWidth
+            autoComplete="given-name"
+            variant="outlined"
+            error={onMoveNext && userName?.length == 0}
+            value={userName}
+            color="success"
+            onChange={(e) => {
+              setUserName(e.target.value);
+              setShipping();
+            }}
           />
         </Grid>
         <Grid item xs={12}>
@@ -100,7 +100,7 @@ export default function Shipping() {
             error={onMoveNext && address1.length == 0}
           />
         </Grid>
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <TextField
             id="address2"
             name="address2"
@@ -187,7 +187,7 @@ export default function Shipping() {
             }}
             error={onMoveNext && country.length == 0}
           />
-        </Grid>
+        </Grid> */}
         {/* <Grid item xs={12}>
           <FormControlLabel
             control={

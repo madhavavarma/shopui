@@ -45,7 +45,7 @@ const Order = () => {
 
   return (
     <Box sx={{ backgroundColor: "#fff", maxWidth: "500px" }}>
-      <Typography variant="h6" gutterBottom borderBottom={"5px solid #f9f9f9"}>
+      <Typography variant="h6" gutterBottom>
         CART | {cartProducts.length} item(s)
       </Typography>
 
@@ -99,16 +99,7 @@ const Order = () => {
                       fontWeight: "normal",
                     }}
                   >
-                    {cartItem.product.productName}
-                  </Typography>
-
-                  <Typography
-                    display="flex"
-                    alignItems={"center"}
-                    fontSize="1rem"
-                  >
-                    <CurrencyRupeeIcon sx={{ color: "#2db457" }} />{" "}
-                    {cartItem.product.price * cartItem.quantity}
+                    {cartItem.product.productName} - {cartItem.product.weight}
                   </Typography>
                 </Grid>
 
@@ -133,11 +124,19 @@ const Order = () => {
                   <Typography
                     display="flex"
                     alignItems={"center"}
+                    fontSize="1rem"
+                  >
+                    <CurrencyRupeeIcon sx={{ color: "#2db457" }} />{" "}
+                    {cartItem.product.price * cartItem.quantity}
+                  </Typography>
+                  {/* <Typography
+                    display="flex"
+                    alignItems={"center"}
                     fontSize="0.9rem"
                   >
                     <BalanceOutlinedIcon sx={{ color: "#2db457" }} />{" "}
                     {cartItem.product.weight}
-                  </Typography>
+                  </Typography> */}
                 </Grid>
               </CardContent>
             </Card>

@@ -85,74 +85,72 @@ export const Header = () => {
           <CircularProgress color="inherit" />
         </Backdrop>
       </aside>
-      <ElevationScroll>
-        <Box>
-          <AppBar sx={{ backgroundColor: "#f9f9f9", padding: "0" }}>
-            <Toolbar
-              sx={{ backgroundColor: "#f9f9f9", padding: "0 !important" }}
-            >
-              <Box
-                display="flex"
-                flexDirection="column"
-                sx={{ backgroundColor: "#fff", width: "100%" }}
+      <Toolbar sx={{ backgroundColor: "#f9f9f9", padding: "0 !important" }}>
+        <Box
+          display="flex"
+          flexDirection="column"
+          sx={{ backgroundColor: "#fff", width: "100%" }}
+        >
+          <Container>
+            <Grid display="flex" pt={1} alignItems="center">
+              <Grid
+                item
+                xs={6}
+                container
+                display={"flex"}
+                alignItems="center"
+                onClick={logoClickHandler}
+                sx={{ position: "relative", left: "-12px" }}
               >
-                <Container>
-                  <Grid display="flex" pt={1} alignItems="center">
-                    <Grid
-                      item
-                      xs={6}
-                      container
-                      display={"flex"}
-                      alignItems="center"
-                      onClick={logoClickHandler}
-                      sx={{ position: "relative", left: "-12px" }}
-                    >
-                      <Avatar
-                        alt="Village Ahar"
-                        src="./images/valogo.png"
-                        sx={{ width: "5.5rem", height: "5.5rem" }}
-                        variant="square"
-                      />
-                      {/* <Typography
+                <Avatar
+                  alt="Village Ahar"
+                  src="./images/valogo.png"
+                  sx={{ width: "5.5rem", height: "5.5rem" }}
+                  variant="square"
+                />
+                {/* <Typography
                         fontSize={"1.3rem"}
                         fontWeight={"bold"}
                         sx={{ cursor: "pointer", color: "black" }}
                       >
                         Village Ahar
                       </Typography> */}
-                    </Grid>
-                    <Grid item xs></Grid>
-                    <Grid item xs="auto" alignItems="right">
-                      <Stack direction="row" spacing={2}>
-                        <Typography
-                          sx={{ color: "#2db457", fontSize: "1.5rem" }}
-                        >
-                          Fresh Food to Home <br />
-                        </Typography>
-                        {/* <Button
+              </Grid>
+              <Grid item xs></Grid>
+              <Grid item xs="auto" alignItems="right">
+                <Stack direction="column">
+                  <Typography sx={{ fontSize: "0.8rem" }}>
+                    Pithapuram <br />
+                  </Typography>
+                  <Typography sx={{ fontSize: "0.6rem" }}>
+                    <b>Minimum Order - &#8360; 100</b>
+                  </Typography>
+                  <Typography sx={{ fontSize: "0.6rem" }}>
+                    <b>Free Home Delivery (7PM - 8PM)</b>
+                  </Typography>
+                  <Typography sx={{ fontSize: "0.6rem" }}>
+                    Reach Us at 9885015203
+                  </Typography>
+                  {/* <Button
                           variant="outlined"
                           onClick={cartClickHandler}
                           startIcon={<AddShoppingCartIcon />}
                         >
                           {cart?.length}
                         </Button> */}
-                        {/* <Button
+                  {/* <Button
                           variant="outlined"
                           onClick={accountClickHandler}
                         >
                           <Avatar sx={{ width: 24, height: 24 }}></Avatar>
                         </Button> */}
-                      </Stack>
-                    </Grid>
-                  </Grid>
-                </Container>
-                <Divider />
-              </Box>
-            </Toolbar>
-          </AppBar>
+                </Stack>
+              </Grid>
+            </Grid>
+          </Container>
+          <Divider />
         </Box>
-      </ElevationScroll>
-      <Box mt={12}></Box>
+      </Toolbar>
     </header>
   );
 };
