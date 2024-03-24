@@ -51,9 +51,17 @@ export default function Checkout() {
 
   const placeOrderHandler = () => {
     console.log(JSON.stringify(checkout));
-    postCheckout(dispatch, checkout);
-    dispatch(checkoutActions.reset());
-    navigate("/thankyou");
+
+    if (
+      checkout.shipping.phone.length == 10 &&
+      checkout.shipping.address1.length > 0 &&
+      checkout.shipping.userName.length > 0
+    ) {
+      postCheckout(dispatch, checkout);
+      dispatch(checkoutActions.reset());
+      navigate("/thankyou");
+    } else {
+    }
   };
 
   return (
@@ -102,19 +110,9 @@ export default function Checkout() {
           <Payment />
           <Button
             onClick={placeOrderHandler}
-            disabled={
-              cartItems.length < 1 ||
-              checkout.shipping.phone.length != 10 ||
-              checkout.shipping.address1.length < 1
-            }
             sx={{
               maxWidth: "500px",
-              backgroundColor:
-                cartItems.length < 1 ||
-                checkout.shipping.phone.length != 10 ||
-                checkout.shipping.address1.length < 1
-                  ? "GrayText"
-                  : "#2db457",
+              backgroundColor: "#2db457",
               color: "#fff !important",
               opacity: 0.8,
 

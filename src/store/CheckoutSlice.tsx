@@ -84,6 +84,7 @@ var checkoutSlice = createSlice({
 
     // Shipping
     setShipping(state, action) {
+      console.log(action.payload);
       state.shipping = action.payload;
     },
 
