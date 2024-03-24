@@ -87,12 +87,13 @@ export default function Shipping() {
             required
             id="address1"
             name="address1"
-            label="Address line 1"
+            label="Address"
             fullWidth
             autoComplete="Streetaddress"
             variant="outlined"
             value={address1}
             color="success"
+            placeholder="House No, Street, Nearby ..."
             onChange={(e) => {
               setAddress1(e.target.value);
               setShipping();

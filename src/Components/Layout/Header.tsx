@@ -123,10 +123,10 @@ export const Header = () => {
                     Pithapuram <br />
                   </Typography>
                   <Typography sx={{ fontSize: "0.6rem" }}>
-                    <b>Minimum Order - &#8360; 100</b>
+                    <b>Minimum Order - &#8360; 50</b>
                   </Typography>
                   <Typography sx={{ fontSize: "0.6rem" }}>
-                    <b>Free Home Delivery (7PM - 8PM)</b>
+                    <b>Free Home Delivery in 24 hours</b>
                   </Typography>
                   <Typography sx={{ fontSize: "0.6rem" }}>
                     Reach Us at 9885015203

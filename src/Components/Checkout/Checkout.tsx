@@ -102,10 +102,19 @@ export default function Checkout() {
           <Payment />
           <Button
             onClick={placeOrderHandler}
-            disabled={cartItems.length < 1}
+            disabled={
+              cartItems.length < 1 ||
+              checkout.shipping.phone.length != 10 ||
+              checkout.shipping.address1.length < 1
+            }
             sx={{
               maxWidth: "500px",
-              backgroundColor: "#2db457",
+              backgroundColor:
+                cartItems.length < 1 ||
+                checkout.shipping.phone.length != 10 ||
+                checkout.shipping.address1.length < 1
+                  ? "GrayText"
+                  : "#2db457",
               color: "#fff !important",
               opacity: 0.8,
 
