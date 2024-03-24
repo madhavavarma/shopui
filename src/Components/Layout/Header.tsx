@@ -129,7 +129,7 @@ export const Header = () => {
                     <b>Free Home Delivery in 24 hours</b>
                   </Typography>
                   <Typography sx={{ fontSize: "0.6rem" }}>
-                    Reach Us at 9885015203
+                    Reach Us/Watsapp at 6304679843
                   </Typography>
                   {/* <Button
                           variant="outlined"

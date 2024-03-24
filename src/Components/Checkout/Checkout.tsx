@@ -61,6 +61,13 @@ export default function Checkout() {
       dispatch(checkoutActions.reset());
       navigate("/thankyou");
     } else {
+      if (checkout.shipping.phone.length != 10) {
+        alert(`Phone Number: ${checkout.shipping.phone} is not valid`);
+      } else if (checkout.shipping.userName.length < 1) {
+        alert(`Enter your Name`);
+      } else if (checkout.shipping.address1.length < 1) {
+        alert(`Enter Your Address`);
+      }
     }
   };
 

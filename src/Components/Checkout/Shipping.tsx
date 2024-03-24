@@ -1,7 +1,7 @@
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IStoreReducer } from "../../models/IStoreReducer";
 import { checkoutActions } from "../../store/CheckoutSlice";
@@ -39,6 +39,22 @@ export default function Shipping() {
     );
   };
 
+  useEffect(() => {
+    setShipping();
+  }, [userName, phone, address1]);
+
+  const handlePhoneChange = async function (event: any) {
+    await setPhone(event.target.value);
+  };
+
+  const handleUserNameChange = async function (event: any) {
+    await setUserName(event.target.value);
+  };
+
+  const handleAddressChange = async function (event: any) {
+    await setAddress1(event.target.value);
+  };
+
   return (
     <Box sx={{ maxWidth: "500px" }}>
       <Typography variant="h6" gutterBottom>
@@ -57,11 +73,8 @@ export default function Shipping() {
             type="number"
             value={phone}
             color="success"
-            onChange={(e) => {
-              setPhone(e.target.value);
-              setShipping();
-            }}
-            error={onMoveNext && phone.length == 0}
+            onChange={(e) => handlePhoneChange(e)}
+            error={onMoveNext && phone.length != 10}
           />
         </Grid>
         <Grid item xs={6} sm={6}>
@@ -76,10 +89,7 @@ export default function Shipping() {
             error={onMoveNext && userName?.length == 0}
             value={userName}
             color="success"
-            onChange={(e) => {
-              setUserName(e.target.value);
-              setShipping();
-            }}
+            onChange={(e) => handleUserNameChange(e)}
           />
         </Grid>
         <Grid item xs={12}>
@@ -94,114 +104,10 @@ export default function Shipping() {
             value={address1}
             color="success"
             placeholder="House No, Street, Nearby ..."
-            onChange={(e) => {
-              setAddress1(e.target.value);
-              setShipping();
-            }}
+            onChange={(e) => handleAddressChange(e)}
             error={onMoveNext && address1.length == 0}
           />
         </Grid>
-        {/* <Grid item xs={12}>
-          <TextField
-            id="address2"
-            name="address2"
-            label="Address line 2"
-            fullWidth
-            autoComplete="shipping address-line2"
-            variant="outlined"
-            value={address2}
-            color="success"
-            onChange={(e) => {
-              setAddress2(e.target.value);
-              setShipping();
-            }}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="city"
-            name="city"
-            label="City"
-            fullWidth
-            autoComplete="shipping address-level2"
-            variant="outlined"
-            value={city}
-            color="success"
-            onChange={(e) => {
-              setCity(e.target.value);
-              setShipping();
-            }}
-            error={onMoveNext && city.length == 0}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            id="state"
-            name="state"
-            label="State/Province/Region"
-            fullWidth
-            variant="outlined"
-            value={state}
-            color="success"
-            onChange={(e) => {
-              setState(e.target.value);
-              setShipping();
-            }}
-            error={onMoveNext && state.length == 0}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="zip"
-            name="zip"
-            label="Zip / Postal code"
-            fullWidth
-            autoComplete="shipping postal-code"
-            variant="outlined"
-            type="number"
-            value={zip}
-            color="success"
-            onChange={(e) => {
-              setZip(e.target.value);
-              setShipping();
-            }}
-            error={onMoveNext && zip.length == 0}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            disabled
-            required
-            id="country"
-            name="country"
-            label="Country"
-            fullWidth
-            autoComplete="shipping country"
-            variant="outlined"
-            value={country}
-            color="success"
-            onChange={(e) => {
-              setCountry(e.target.value);
-              setShipping();
-            }}
-            error={onMoveNext && country.length == 0}
-          />
-        </Grid> */}
-        {/* <Grid item xs={12}>
-          <FormControlLabel
-            control={
-              <Checkbox
-                color="secondary"
-                name="saveAddress"
-                value="yes"
-                checked
-              />
-            }
-            label="Use this address for payment details"
-          />
-        </Grid> */}
       </Grid>
     </Box>
   );
